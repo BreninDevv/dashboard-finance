@@ -12,7 +12,7 @@ const InputsValue = ({ Name }) => {
   const formatted = new Intl.NumberFormat("en-US").format(value);
 
   return (
-    <div className="bg-white w-70 h-40 rounded-3xl p-4 flex flex-col justify-between">
+    <div className="bg-white w-70 h-40 rounded-3xl p-4 flex flex-col justify-between font-inter font-bold">
       <div className="flex justify-between">
         <div>
           <Image src={SalaryIcon} alt="Salary Icon" width={25} height={25} />
@@ -39,7 +39,8 @@ const InputsValue = ({ Name }) => {
           <h2 className="text-3xl font-bold">${formatted}</h2>
         )}
       </div>
-      <p>{Name}</p>
+
+      <p className="text-xl text-zinc-500">{Name}</p>
     </div>
   );
 };
