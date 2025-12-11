@@ -18,7 +18,7 @@ const Header = () => {
       </header>
 
       {isOpen ? (
-        <div className="absolute h-full bg-white shadow-lg w-40 left-0 top-0"></div>
+        <div className="absolute h-full bg-white shadow-lg w-40 left-0 top-0 z-10"></div>
       ) : (
         <p className="hidden">Jesus é bom</p>
       )}

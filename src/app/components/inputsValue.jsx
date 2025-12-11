@@ -2,20 +2,20 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import SalaryIcon from "../components/icons/hand-coin-line.svg";
+
 import SalaryEdit from "../components/icons/exchange-line.svg";
 
-const InputsValue = ({ Name }) => {
+const InputsValue = ({ Name, Icon }) => {
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState("145000");
 
   const formatted = new Intl.NumberFormat("en-US").format(value);
 
   return (
-    <div className="bg-white w-70 h-40 rounded-3xl p-4 flex flex-col justify-between font-inter font-bold">
+    <div className="bg-white min-w-30 max-w-70 h-40 rounded-3xl p-4 flex flex-col justify-between font-inter font-bold ">
       <div className="flex justify-between">
         <div>
-          <Image src={SalaryIcon} alt="Salary Icon" width={25} height={25} />
+          <Image src={Icon} alt="Salary Icon" width={25} height={25} />
         </div>
         <div onClick={() => setEditing(!editing)}>
           <Image
@@ -23,7 +23,7 @@ const InputsValue = ({ Name }) => {
             alt="Salary Edit"
             width={25}
             height={25}
-            className="opacity-45"
+            className="opacity-45 z-0"
           />
         </div>
       </div>
@@ -36,7 +36,7 @@ const InputsValue = ({ Name }) => {
             autoFocus
           />
         ) : (
-          <h2 className="text-3xl font-bold">${formatted}</h2>
+          <h2 className="text-xl font-bold">${formatted}</h2>
         )}
       </div>
 
