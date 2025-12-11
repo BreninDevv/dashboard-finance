@@ -12,7 +12,7 @@ const InputsValue = ({ Name, Icon }) => {
   const formatted = new Intl.NumberFormat("en-US").format(value);
 
   return (
-    <div className="bg-white min-w-30 max-w-70 h-40 rounded-3xl p-4 flex flex-col justify-between font-inter font-bold shadow">
+    <div className="bg-white min-w-30 max-w-70 h-40 rounded-3xl p-4 flex flex-col justify-between font-inter font-bold shadow my-2">
       <div className="flex justify-between">
         <div>
           <Image src={Icon} alt="Salary Icon" width={25} height={25} />

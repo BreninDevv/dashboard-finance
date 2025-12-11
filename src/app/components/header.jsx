@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="min-w-screen h-20 bg-[#f0f0f6] flex justify-between items-center p-2">
+      <header className="min-w-screen h-20 bg-white flex justify-between items-center p-2 ">
         <div>
           <h1 className="font-medium text-xl">Good Morning, Name!</h1>
         </div>
