@@ -20,7 +20,7 @@ const data = [
 
 function Graphic() {
   return (
-    <div className="w-full h-64 bg-white p-4 rounded-xl shadow overflow-scroll">
+    <div className="w-full h-64 bg-white p-4 rounded-xl shadow ">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
           <XAxis dataKey="name" tick={{ fontSize: 12 }} />

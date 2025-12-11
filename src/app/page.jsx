@@ -5,6 +5,7 @@ import SalaryIcon from "../app/components/icons/hand-coin-line.svg";
 import EarningsIcon from "../app/components/icons/money-dollar-circle-line.svg";
 import ExpensesIcon from "../app/components/icons/shopping-basket-line.svg";
 import Graphic from "./components/graphic";
+import Todo from "./components/todo";
 
 const Page = () => {
   return (
@@ -18,6 +19,7 @@ const Page = () => {
             <InputsValue Name={"Your expenses"} Icon={ExpensesIcon} />
           </div>
           <Graphic />
+          <Todo />
         </div>
       </div>
     </>
