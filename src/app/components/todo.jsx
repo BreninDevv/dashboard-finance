@@ -1,20 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import ComponentTodo from "./componentTodo";
 import RestaurantLogo from "../components/icons/restaurant-line.svg";
+import EditLogo from "../components/icons/edit-box-line.svg";
 
 const Todo = () => {
   const [on, setOn] = useState(false);
 
   return (
     <>
-      <div className="bg-white min-w-32 h-50 overflow-hidden rounded-xl shadow p-3">
-        <div className="flex justify-between">
-          <h1>Todo List</h1>
+      <div className="bg-white min-w-32 h-50 overflow-hidden rounded-xl shadow px-4">
+        <div className="flex justify-between py-4">
+          <h1 className="text-xl font-bold">Todo List</h1>
 
           <div>
-            <button onClick={() => setOn(true)}>Modal</button>
+            <button onClick={() => setOn(true)}>
+              <Image src={EditLogo} alt="Edit Logo" width={22} />
+            </button>
           </div>
         </div>
         <div>
@@ -33,7 +37,7 @@ const Todo = () => {
           onClick={() => setOn(false)}
         >
           <div
-            className="bg-white w-70 h-60 rounded-xl shadow"
+            className="bg-white w-72 h-60 rounded-xl shadow"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col p-4  gap-y-2">
@@ -60,7 +64,7 @@ const Todo = () => {
               <div>
                 <p>Preço</p>
                 <input
-                  type="Number"
+                  type="number"
                   className="text-gray-400 border-2 rounded"
                 />
               </div>
