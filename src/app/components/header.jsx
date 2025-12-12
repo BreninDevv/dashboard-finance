@@ -10,7 +10,7 @@ const Header = () => {
     <>
       <header className="min-w-screen h-20 bg-white flex justify-between items-center p-2 ">
         <div>
-          <h1 className="font-medium text-xl">Good Morning, Name!</h1>
+          <h1 className="font-bold text-xl ">Good Morning, Name!</h1>
         </div>
         <div onClick={() => setIsOpen((prev) => !prev)}>
           <Image src={MenuHamburguer} alt="Menu Hamburguer" width={30} />

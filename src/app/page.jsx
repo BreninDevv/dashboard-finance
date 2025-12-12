@@ -6,6 +6,7 @@ import EarningsIcon from "../app/components/icons/money-dollar-circle-line.svg";
 import ExpensesIcon from "../app/components/icons/shopping-basket-line.svg";
 import Graphic from "./components/graphic";
 import Todo from "./components/todo";
+import Desires from "./components/desires";
 
 const Page = () => {
   return (
@@ -20,6 +21,7 @@ const Page = () => {
           </div>
           <Graphic />
           <Todo />
+          <Desires />
         </div>
       </div>
     </>

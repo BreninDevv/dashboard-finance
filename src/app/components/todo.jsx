@@ -5,6 +5,11 @@ import Image from "next/image";
 import ComponentTodo from "./componentTodo";
 import RestaurantLogo from "../components/icons/restaurant-line.svg";
 import EditLogo from "../components/icons/edit-box-line.svg";
+import Compras from "../components/icons/shopping-cart-2-line.svg";
+import Lazer from "../components/icons/football-line.svg";
+import Transporte from "../components/icons/bus-2-line.svg";
+import Contas from "../components/icons/money-dollar-box-line.svg";
+import Right from "../components/icons/checkbox-circle-line.svg";
 
 const Todo = () => {
   const [on, setOn] = useState(false);
@@ -15,12 +20,24 @@ const Todo = () => {
 
   const [tasks, setTasks] = useState([]);
 
+  const icons = {
+    Alimentação: RestaurantLogo,
+    Transporte: Transporte,
+    Contas: Contas,
+    Compras: Compras,
+    Lazer: Lazer,
+  };
+
+  function deleteTask(id) {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+  }
+
   function createTask() {
     if (!taskType || !taskName || !taskPrice) return;
 
     const newTask = {
       id: Date.now(),
-      type: RestaurantLogo,
+      type: icons[taskType],
       nameType: taskType,
       name: taskName,
       price: Number(taskPrice),
@@ -47,15 +64,28 @@ const Todo = () => {
         </div>
 
         <div className="flex flex-col gap-2 pb-4 bg-[#e5e5ee] rounded-md min-h-30 max-h-30 p-2 overflow-auto">
-          {tasks.map((t) => (
-            <ComponentTodo
-              key={t.id}
-              type={t.type}
-              name={t.name}
-              price={t.price}
-              nameType={t.nameType}
-            />
-          ))}
+          {tasks.length === 0 ? (
+            <div className="text-center text-gray-500 flex flex-col items-center py-4">
+              <div>
+                <Image src={Right} alt="Check logo" className="opacity-50" />
+              </div>
+              <div>
+                <span>Nenhuma tarefa por aqui...</span>
+              </div>
+            </div>
+          ) : (
+            tasks.map((t) => (
+              <ComponentTodo
+                key={t.id}
+                id={t.id}
+                type={t.type}
+                name={t.name}
+                price={t.price}
+                nameType={t.nameType}
+                onDelete={deleteTask}
+              />
+            ))
+          )}
         </div>
       </div>
 
@@ -77,7 +107,7 @@ const Todo = () => {
                     value={taskType}
                     onChange={(e) => setTaskType(e.target.value)}
                   >
-                    <option>Selecione…</option>
+                    <option value="">Selecione…</option>
                     <option value="Alimentação">Alimentação</option>
                     <option value="Transporte">Transporte</option>
                     <option value="Contas">Contas</option>

@@ -1,24 +1,25 @@
 import Image from "next/image";
-import React from "react";
+import Trash from "../components/icons/delete-bin-6-line.svg";
 
-const ComponentTodo = ({ type, name, price, nameType }) => {
+const ComponentTodo = ({ id, type, name, price, nameType, onDelete }) => {
   return (
-    <>
-      <div className="bg-white  w-full min-h-10 rounded-md flex justify-between items-center px-2">
-        <div className="flex gap-2">
-          <div>
-            <Image src={type} alt={nameType} />
-          </div>
-          <div>
-            <h1>{name}</h1>
-          </div>
-        </div>
-
+    <div className="flex justify-between items-center bg-white p-2 rounded shadow">
+      <div className="flex items-center gap-2">
+        <Image src={type} alt="Icon" width={22} height={22} />
         <div>
-          <p>R${price}</p>
+          <p className="font-semibold">{name}</p>
+          <p className="text-sm text-gray-600">{nameType}</p>
         </div>
       </div>
-    </>
+
+      <div className="flex items-center gap-3">
+        <p>R$ {price}</p>
+
+        <button onClick={() => onDelete(id)}>
+          <Image src={Trash} alt="Trash" width={20} className="opacity-50" />
+        </button>
+      </div>
+    </div>
   );
 };
 
