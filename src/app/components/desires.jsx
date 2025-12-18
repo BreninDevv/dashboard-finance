@@ -138,8 +138,8 @@ const Desires = () => {
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
+          <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
             <h2 className="text-xl font-semibold">Criar Desejo</h2>
 
             <input
@@ -178,8 +178,8 @@ const Desires = () => {
       )}
 
       {addModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
+          <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
             <h2 className="text-xl font-semibold">
               Adicionar dinheiro para:{" "}
               <span className="font-bold">{currentDesire?.name}</span>

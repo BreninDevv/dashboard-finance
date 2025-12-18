@@ -91,11 +91,11 @@ const Todo = () => {
 
       {on && (
         <div
-          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 "
           onClick={() => setOn(false)}
         >
           <div
-            className="bg-white w-80 h-60 rounded-xl shadow"
+            className="bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col p-4 gap-y-2">

@@ -13,12 +13,9 @@ const Page = () => {
     <>
       <div className="font-inter ">
         <Header />
-        <div className="px-2 flex flex-col gap-y-4">
-          <div className="flex gap-2 overflow-scroll">
-            <InputsValue Name={"Your salary"} Icon={SalaryIcon} />
-            <InputsValue Name={"Your earnings"} Icon={EarningsIcon} />
-            <InputsValue Name={"Your expenses"} Icon={ExpensesIcon} />
-          </div>
+        <div className="px-2 flex flex-col gap-y-4 py-20">
+          <InputsValue Name={"Current Balance"} Icon={SalaryIcon} />
+
           <Graphic />
           <Todo />
           <Desires />
