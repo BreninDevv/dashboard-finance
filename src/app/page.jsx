@@ -1,26 +1,32 @@
+"use client";
+
 import React from "react";
-import InputsValue from "./components/inputsValue";
+import { TransactionsProvider } from "../context/TransactionsContext";
 import Header from "./components/header";
 import SalaryIcon from "../app/components/icons/hand-coin-line.svg";
-import EarningsIcon from "../app/components/icons/money-dollar-circle-line.svg";
-import ExpensesIcon from "../app/components/icons/shopping-basket-line.svg";
-import Graphic from "./components/graphic";
-import Todo from "./components/todo";
-import Desires from "./components/desires";
+import ChartPanel from "./components/ChartPanel";
+import TransactionsPanel from "./components/TransactionsPanel";
+import BalanceCard from "./components/BalanceCard";
+import RightColumn from "./components/RightColumn";
 
 const Page = () => {
   return (
     <>
-      <div className="font-inter ">
-        <Header />
-        <div className="px-2 flex flex-col gap-y-4 py-20">
-          <InputsValue Name={"Current Balance"} Icon={SalaryIcon} />
+      <TransactionsProvider>
+        <div className="font-inter ">
+          <Header />
+          <div className="px-2 flex flex-col gap-y-4 pt-20">
+            <BalanceCard Icon={SalaryIcon} />
 
-          <Graphic />
-          <Todo />
-          <Desires />
+            <ChartPanel />
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <TransactionsPanel />
+              <RightColumn />
+            </div>
+          </div>
         </div>
-      </div>
+      </TransactionsProvider>
     </>
   );
 };
