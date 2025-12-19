@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import MenuHamburguer from "../components/icons/menu-line.svg";
+import MenuHamburguer from "../../components/icons/menu-line.svg";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

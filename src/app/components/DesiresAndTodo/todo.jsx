@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ComponentTodo from "./componentTodo";
-import RestaurantLogo from "../components/icons/restaurant-line.svg";
-import EditLogo from "../components/icons/edit-box-line.svg";
-import Compras from "../components/icons/shopping-cart-2-line.svg";
-import Lazer from "../components/icons/football-line.svg";
-import Transporte from "../components/icons/bus-2-line.svg";
-import Contas from "../components/icons/money-dollar-box-line.svg";
-import Right from "../components/icons/checkbox-circle-line.svg";
+import RestaurantLogo from "../../components/icons/restaurant-line.svg";
+import EditLogo from "../../components/icons/edit-box-line.svg";
+import Compras from "../../components/icons/shopping-cart-2-line.svg";
+import Lazer from "../../components/icons/football-line.svg";
+import Transporte from "../../components/icons/bus-2-line.svg";
+import Contas from "../../components/icons/money-dollar-box-line.svg";
+import Right from "../../components/icons/checkbox-circle-line.svg";
 
 const Todo = () => {
   const [on, setOn] = useState(false);
@@ -54,7 +54,7 @@ const Todo = () => {
 
   return (
     <>
-      <div className="bg-white min-w-32 h-50 overflow-hidden rounded-xl shadow px-4">
+      <div className="bg-white min-w-32 h-50 overflow-hidden rounded-xl shadow px-4 sm:w-1/2">
         <div className="flex justify-between py-4">
           <h1 className="text-xl font-bold">Todo List</h1>
 
@@ -91,7 +91,7 @@ const Todo = () => {
 
       {on && (
         <div
-          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 min-h-[100dvh]"
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 "
           onClick={() => setOn(false)}
         >
           <div

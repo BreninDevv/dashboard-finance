@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import Add from "../components/icons/add-circle-line.svg";
-import Send from "../components/icons/send-plane-2-line.svg";
+import Add from "../../components/icons/add-circle-line.svg";
+import Send from "../../components/icons/send-plane-2-line.svg";
 
 const InputsValue = ({ Name, balance = 0, onAdd }) => {
   const [send, setSend] = useState(false);
@@ -31,14 +31,14 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
         <div>
           <div className="flex justify-between px-12">
             <div
-              className="bg-sky-300  w-20 text-center text-white rounded-2xl p-2 flex gap-2 justify-center items-center"
+              className="bg-sky-300  w-20 text-center text-white rounded-2xl p-2 flex gap-2 justify-center items-center sm:hidden"
               onClick={() => setAdd((prev) => !prev)}
             >
               <Image src={Add} alt="Add icon" width={25} />
               Add
             </div>
             <div
-              className="bg-sky-300 w-20 text-center rounded-2xl p-2 flex text-white gap-1 justify-center items-center  "
+              className="bg-sky-300 w-20 text-center rounded-2xl p-2 flex text-white gap-1 justify-center items-center sm:hidden "
               onClick={() => setSend((prev) => !prev)}
             >
               <Image src={Send} alt="Send icon" width={20} />

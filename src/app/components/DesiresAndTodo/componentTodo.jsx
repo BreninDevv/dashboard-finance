@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Trash from "../components/icons/delete-bin-6-line.svg";
+import Trash from "../../components/icons/delete-bin-6-line.svg";
 
 const ComponentTodo = ({ id, type, name, price, nameType, onDelete }) => {
   return (

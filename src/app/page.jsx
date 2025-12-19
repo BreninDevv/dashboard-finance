@@ -2,12 +2,14 @@
 
 import React from "react";
 import { TransactionsProvider } from "../context/TransactionsContext";
-import Header from "./components/header";
+import Header from "./components/Header/header";
 import SalaryIcon from "../app/components/icons/hand-coin-line.svg";
-import ChartPanel from "./components/ChartPanel";
-import TransactionsPanel from "./components/TransactionsPanel";
-import BalanceCard from "./components/BalanceCard";
-import RightColumn from "./components/RightColumn";
+import ChartPanel from "./components/Grafico/ChartPanel";
+import TransactionsPanel from "./components/Transaction/TransactionsPanel";
+import BalanceCard from "./components/Cards/BalanceCard";
+import IncomeCard from "./components/Cards/IncomeCard";
+import ExpensesCard from "./components/Cards/ExpensesCard";
+import RightColumn from "./components/DesiresAndTodo/RightColumn";
 
 const Page = () => {
   return (
@@ -16,7 +18,15 @@ const Page = () => {
         <div className="font-inter ">
           <Header />
           <div className="px-2 flex flex-col gap-y-4 pt-20">
-            <BalanceCard Icon={SalaryIcon} />
+            <div className="hidden sm:grid grid-cols-3 gap-2">
+              <BalanceCard Icon={SalaryIcon} />
+              <IncomeCard />
+              <ExpensesCard />
+            </div>
+
+            <div className="sm:hidden">
+              <BalanceCard Icon={SalaryIcon} />
+            </div>
 
             <ChartPanel />
 

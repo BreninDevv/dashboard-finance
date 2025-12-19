@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import BlackEdit from "../components/icons/edit-box-line-black.svg";
-import TrashWhite from "../components/icons/delete-bin-6-line-white.svg";
-import Check from "../components/icons/check-line.svg";
-import Right from "../components/icons/checkbox-circle-line-white.svg";
+import BlackEdit from "../../components/icons/edit-box-line-black.svg";
+import TrashWhite from "../../components/icons/delete-bin-6-line-white.svg";
+import Check from "../../components/icons/check-line.svg";
+import Right from "../../components/icons/checkbox-circle-line-white.svg";
 
 const Desires = () => {
   const [desires, setDesires] = useState([]);
@@ -60,7 +60,7 @@ const Desires = () => {
 
   return (
     <>
-      <div className="bg-black min-w-40 max-h-50 min-h-40 overflow-scroll rounded-xl shadow px-4 mb-4 gap-y-2 py-4">
+      <div className="bg-black min-w-40 max-h-50 min-h-50 overflow-scroll rounded-xl shadow px-4 mb-4 gap-y-2 py-4 sm:w-1/2">
         <div className="flex justify-between">
           <div>Jes</div>
           <div>

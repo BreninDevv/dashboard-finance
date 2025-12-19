@@ -6,7 +6,7 @@ import Desires from "./desires";
 
 export default function RightColumn() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 sm:flex-row">
       <Todo />
       <Desires />
     </div>

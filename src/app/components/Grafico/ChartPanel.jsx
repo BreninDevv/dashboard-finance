@@ -2,7 +2,7 @@
 
 import React, { useMemo } from "react";
 import Graphic from "./graphic";
-import { useTransactions } from "../../context/TransactionsContext";
+import { useTransactions } from "../../../context/TransactionsContext";
 
 const months = [
   "Jan",
