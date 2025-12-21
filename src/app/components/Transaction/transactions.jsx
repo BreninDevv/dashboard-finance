@@ -4,7 +4,7 @@ import React from "react";
 
 function Transactions({ transactions = [], onDelete }) {
   return (
-    <div className="bg-white rounded-xl shadow p-4 min-h-50 max-h-50">
+    <div className="bg-white rounded-xl shadow p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
       <div className="flex justify-between items-center pb-2">
         <h2 className="text-lg font-bold">Transactions</h2>
         <span className="text-sm text-gray-500">History</span>
@@ -12,7 +12,7 @@ function Transactions({ transactions = [], onDelete }) {
 
       <div className="mt-4 max-h-30 overflow-auto">
         {transactions.length === 0 ? (
-          <div className="flex justify-center pt-5">
+          <div className="flex justify-center text-center pt-5">
             <h1 className="font-medium text-gray-500 text-lg">
               Sem transações por enquanto...
             </h1>

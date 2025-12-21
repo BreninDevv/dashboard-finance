@@ -29,7 +29,7 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
           <span className="font-inter text-white text-3xl ">R${formatted}</span>
         </div>
         <div>
-          <div className="flex justify-between px-12">
+          <div className="flex justify-between px-8">
             <div
               className="bg-sky-300  w-20 text-center text-white rounded-2xl p-2 flex gap-2 justify-center items-center sm:hidden"
               onClick={() => setAdd((prev) => !prev)}

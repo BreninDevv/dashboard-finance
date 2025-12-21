@@ -60,7 +60,11 @@ const Desires = () => {
 
   return (
     <>
-      <div className="bg-black min-w-40 max-h-50 min-h-50 overflow-scroll rounded-xl shadow px-4 mb-4 gap-y-2 py-4 sm:w-1/2">
+      <div
+        className={`bg-black min-w-40 max-h-56 min-h-56 xl:max-h-64 xl:min-h-56 rounded-xl shadow px-4 mb-4 gap-y-2 py-4 w-full ${
+          desires.length > 0 ? "overflow-y-scroll" : ""
+        }`}
+      >
         <div className="flex justify-between">
           <div>Jes</div>
           <div>
@@ -74,9 +78,9 @@ const Desires = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
           {desires.length === 0 && (
-            <div className="flex flex-col items-center py-4 opacity-50">
+            <div className="flex flex-col items-center py-12 opacity-50">
               <div>
                 <Image src={Right} alt="Check logo" />
               </div>

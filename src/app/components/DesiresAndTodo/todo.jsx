@@ -54,7 +54,7 @@ const Todo = () => {
 
   return (
     <>
-      <div className="bg-white min-w-32 h-50 overflow-hidden rounded-xl shadow px-4 sm:w-1/2">
+      <div className="bg-white min-w-32 h-56  overflow-hidden rounded-xl shadow px-4 w-full">
         <div className="flex justify-between py-4">
           <h1 className="text-xl font-bold">Todo List</h1>
 
@@ -63,7 +63,7 @@ const Todo = () => {
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 pb-4 bg-[#e5e5ee] rounded-md min-h-30 max-h-30 p-2 overflow-auto">
+        <div className="flex flex-col gap-2 pb-4 bg-[#e5e5ee] rounded-md min-h-32 max-h-36 p-2 overflow-auto">
           {tasks.length === 0 ? (
             <div className="text-center text-gray-500 flex flex-col items-center py-4">
               <div>
