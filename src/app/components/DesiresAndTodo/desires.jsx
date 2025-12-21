@@ -72,7 +72,10 @@ const Desires = () => {
           </div>
 
           <div>
-            <button onClick={() => setModalOpen(true)}>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="cursor-pointer"
+            >
               <Image src={BlackEdit} alt="Black Edit" />
             </button>
           </div>

@@ -58,7 +58,7 @@ const Todo = () => {
         <div className="flex justify-between py-4">
           <h1 className="text-xl font-bold">Todo List</h1>
 
-          <button onClick={() => setOn(true)}>
+          <button onClick={() => setOn(true)} className="cursor-pointer">
             <Image src={EditLogo} alt="Edit Logo" width={22} />
           </button>
         </div>
