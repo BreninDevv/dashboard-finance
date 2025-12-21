@@ -2,6 +2,9 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import MenuHamburguer from "../../components/icons/menu-line.svg";
+import Avatar from "./headerDesktopComponents/avatar";
+import DarkMode from "./headerDesktopComponents/darkMode";
+import EnPt from "./headerDesktopComponents/enPt";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,8 +26,8 @@ const Header = () => {
   return (
     <>
       <header className="min-w-screen h-20 bg-white flex justify-between items-center p-2 shadow-lg fixed z-40">
-        <div>
-          <h1 className="font-bold text-xl ">Good Morning, Name!</h1>
+        <div className="px-4">
+          <h1 className="font-bold text-3xl ">My Bank</h1>
         </div>
         <div onClick={() => setIsOpen((prev) => !prev)}>
           <Image src={MenuHamburguer} alt="Menu Hamburguer" width={30} />
@@ -46,7 +49,19 @@ const Header = () => {
         className={`absolute h-full bg-white shadow-lg w-40 left-0 top-0 z-50 transform transition-transform duration-200 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
-      ></div>
+      >
+        <div className="flex flex-col py-6 px-2 gap-8">
+          <div>
+            <Avatar />
+          </div>
+          <div>
+            <DarkMode />
+          </div>
+          <div>
+            <EnPt />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
