@@ -4,7 +4,7 @@ import React from "react";
 
 function Transactions({ transactions = [], onDelete }) {
   return (
-    <div className="bg-white rounded-xl shadow p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
+    <div className="bg-white rounded-xl shadow-xl p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
       <div className="flex justify-between items-center pb-2">
         <h2 className="text-lg font-bold">Transactions</h2>
         <span className="text-sm text-gray-500">History</span>

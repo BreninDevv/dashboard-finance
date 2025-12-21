@@ -54,7 +54,7 @@ const Todo = () => {
 
   return (
     <>
-      <div className="bg-white min-w-32 h-56  overflow-hidden rounded-xl shadow px-4 w-full">
+      <div className="bg-white min-w-32 h-56  overflow-hidden rounded-xl shadow-xl px-4 w-full">
         <div className="flex justify-between py-4">
           <h1 className="text-xl font-bold">Todo List</h1>
 

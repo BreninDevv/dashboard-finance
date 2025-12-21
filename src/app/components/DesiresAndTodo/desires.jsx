@@ -61,7 +61,7 @@ const Desires = () => {
   return (
     <>
       <div
-        className={`bg-black min-w-40 max-h-56 min-h-56 xl:max-h-64 xl:min-h-56 rounded-xl shadow px-4 mb-4 gap-y-2 py-4 w-full ${
+        className={`bg-black min-w-40 max-h-56 min-h-56 xl:max-h-64 xl:min-h-56 rounded-xl shadow-xl px-4 mb-4 gap-y-2 py-4 w-full ${
           desires.length > 0 ? "overflow-y-scroll" : ""
         }`}
       >

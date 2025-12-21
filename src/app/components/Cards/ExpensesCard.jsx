@@ -39,7 +39,7 @@ export default function ExpensesCard() {
 
   return (
     <>
-      <div className="bg-white w-full h-40 rounded-3xl p-4  flex-col justify-between font-inter font-bold shadow my-2 hidden sm:block">
+      <div className="bg-white w-full h-40 rounded-3xl p-4  flex-col justify-between font-inter font-bold shadow-xl my-2 hidden sm:block">
         <div>
           <p className="font-normal text-xl text-black">Total Expenses</p>
         </div>
