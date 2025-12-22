@@ -50,15 +50,17 @@ const Header = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex flex-col py-6 px-2 gap-8">
-          <div>
-            <Avatar />
-          </div>
-          <div>
-            <DarkMode />
-          </div>
-          <div>
-            <EnPt />
+        <div className=" py-6 px-2 ">
+          <div className="gap-8 flex flex-col ">
+            <div>
+              <Avatar />
+            </div>
+            <div>
+              <DarkMode />
+            </div>
+            <div>
+              <EnPt />
+            </div>
           </div>
         </div>
       </div>

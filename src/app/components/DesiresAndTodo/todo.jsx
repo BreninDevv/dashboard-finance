@@ -70,7 +70,7 @@ const Todo = () => {
                 <Image src={Right} alt="Check logo" className="opacity-50" />
               </div>
               <div>
-                <span>Nenhuma tarefa por aqui...</span>
+                <span>No tasks available...</span>
               </div>
             </div>
           ) : (
@@ -101,18 +101,18 @@ const Todo = () => {
             <div className="flex flex-col p-4 gap-y-2">
               <div className="flex justify-between">
                 <div>
-                  <p>Tipo da tarefa</p>
+                  <p>Task type</p>
                   <select
                     className="border rounded"
                     value={taskType}
                     onChange={(e) => setTaskType(e.target.value)}
                   >
-                    <option value="">Selecione…</option>
-                    <option value="Alimentação">Alimentação</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Contas">Contas</option>
-                    <option value="Compras">Compras</option>
-                    <option value="Lazer">Lazer</option>
+                    <option value="">Select…</option>
+                    <option value="Alimentação">Food</option>
+                    <option value="Transporte">Transport</option>
+                    <option value="Contas">Accounts</option>
+                    <option value="Compras">Purchases</option>
+                    <option value="Lazer">Leisure</option>
                   </select>
                 </div>
 
@@ -125,7 +125,7 @@ const Todo = () => {
               </div>
 
               <div>
-                <p>Nome da tarefa</p>
+                <p>Task name</p>
                 <input
                   type="text"
                   className="border rounded w-full"
@@ -135,7 +135,7 @@ const Todo = () => {
               </div>
 
               <div>
-                <p>Preço</p>
+                <p>Price</p>
                 <input
                   type="number"
                   className="border rounded w-full"
@@ -145,7 +145,7 @@ const Todo = () => {
               </div>
 
               <div className="self-center py-2 rounded-md text-center w-20 h-8">
-                <button onClick={createTask}>Criar</button>
+                <button onClick={createTask}>Create</button>
               </div>
             </div>
           </div>

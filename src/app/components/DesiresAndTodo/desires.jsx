@@ -88,7 +88,7 @@ const Desires = () => {
                 <Image src={Right} alt="Check logo" />
               </div>
               <div>
-                <p className="text-white">Sem desejos por aqui...</p>
+                <p className="text-white">No desires here...</p>
               </div>
             </div>
           )}
@@ -134,7 +134,7 @@ const Desires = () => {
                       onClick={() => openAddModal(d)}
                       className="bg-white text-black px-3 py-1 rounded mt-2"
                     >
-                      Adicionar dinheiro
+                      Add Money
                     </button>
                   )}
                 </div>
@@ -147,11 +147,11 @@ const Desires = () => {
       {modalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
           <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
-            <h2 className="text-xl font-semibold">Criar Desejo</h2>
+            <h2 className="text-xl font-semibold">Create desire</h2>
 
             <input
               type="text"
-              placeholder="Nome do desejo"
+              placeholder="Desire name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="border p-2 rounded"
@@ -159,7 +159,7 @@ const Desires = () => {
 
             <input
               type="number"
-              placeholder="Preço"
+              placeholder="Price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               className="border p-2 rounded"
@@ -170,14 +170,14 @@ const Desires = () => {
                 className="px-4 py-2 bg-gray-300 rounded"
                 onClick={() => setModalOpen(false)}
               >
-                Cancelar
+                Cancel
               </button>
 
               <button
                 className="px-4 py-2 bg-green-600 text-white rounded"
                 onClick={createDesire}
               >
-                Criar
+                Create
               </button>
             </div>
           </div>
@@ -188,13 +188,13 @@ const Desires = () => {
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
           <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
             <h2 className="text-xl font-semibold">
-              Adicionar dinheiro para:{" "}
+              Add money for:{" "}
               <span className="font-bold">{currentDesire?.name}</span>
             </h2>
 
             <input
               type="number"
-              placeholder="Valor a adicionar"
+              placeholder="Value to add..."
               value={addValue}
               onChange={(e) => setAddValue(e.target.value)}
               className="border p-2 rounded"
@@ -205,14 +205,14 @@ const Desires = () => {
                 className="px-4 py-2 bg-gray-300 rounded"
                 onClick={() => setAddModalOpen(false)}
               >
-                Cancelar
+                Cancel
               </button>
 
               <button
                 className="px-4 py-2 bg-green-600 text-white rounded"
                 onClick={addMoney}
               >
-                Adicionar
+                Add
               </button>
             </div>
           </div>

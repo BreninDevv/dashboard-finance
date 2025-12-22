@@ -14,7 +14,7 @@ function Transactions({ transactions = [], onDelete }) {
         {transactions.length === 0 ? (
           <div className="flex justify-center text-center pt-5">
             <h1 className="font-medium text-gray-500 text-lg">
-              Sem transações por enquanto...
+              No transactions for now...
             </h1>
           </div>
         ) : (

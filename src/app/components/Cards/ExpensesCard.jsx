@@ -48,7 +48,7 @@ export default function ExpensesCard() {
         </div>
         <div className="flex justify-end">
           <div
-            className="bg-red-400 w-20 text-center text-white rounded-2xl p-2 flex gap-1 justify-start items-center cursor-pointer"
+            className="bg-red-400 w-20 text-center text-white rounded-2xl p-2 flex gap-1 justify-start items-center cursor-pointer hover:opacity-80"
             onClick={() => setShowModal(true)}
           >
             <Image src={Send} alt="Send icon" width={20} />
@@ -63,18 +63,18 @@ export default function ExpensesCard() {
             <div className="flex flex-col gap-4 pb-6">
               <div className="flex justify-between">
                 <div className="flex flex-col gap-1 w-full">
-                  <p className="text-lg">Categoria do gasto</p>
+                  <p className="text-lg">Expense category</p>
                   <select
                     className="border rounded-md p-2"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option value="">Selecione...</option>
-                    <option value="Alimentação">Alimentação</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Compras">Compras</option>
-                    <option value="Lazer">Lazer</option>
-                    <option value="Contas">Contas</option>
+                    <option value="">Select...</option>
+                    <option value="Alimentação">Food</option>
+                    <option value="Transporte">Transport</option>
+                    <option value="Compras">Purshases</option>
+                    <option value="Lazer">Leisures</option>
+                    <option value="Contas">Accounts</option>
                   </select>
                 </div>
                 <div
@@ -96,7 +96,7 @@ export default function ExpensesCard() {
               <div>
                 <input
                   type="text"
-                  placeholder="Descrição do gasto"
+                  placeholder="Name of expense"
                   className="rounded-md border p-2 w-full"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}

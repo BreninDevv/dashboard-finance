@@ -48,7 +48,7 @@ export default function IncomeCard() {
         </div>
         <div className="flex justify-end">
           <div
-            className="bg-green-500 w-20 text-center text-white rounded-2xl p-2 flex gap-1 justify-center items-center cursor-pointer"
+            className="bg-green-500 w-20 text-center text-white rounded-2xl p-2 flex gap-1 justify-center items-center cursor-pointer hover:opacity-80"
             onClick={() => setShowModal(true)}
           >
             <Image src={Add} alt="Add icon" width={25} />
@@ -63,17 +63,17 @@ export default function IncomeCard() {
             <div className="flex flex-col gap-4 pb-6">
               <div className="flex justify-between">
                 <div className="flex flex-col gap-1 w-full">
-                  <p className="text-lg">Categoria do ganho</p>
+                  <p className="text-lg">Income category</p>
                   <select
                     className="border rounded-md p-2"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option value="">Selecione...</option>
-                    <option value="Salário">Salário</option>
+                    <option value="">Select...</option>
+                    <option value="Salário">Salary</option>
                     <option value="Freelance">Freelance</option>
                     <option value="Extra">Extra</option>
-                    <option value="Outros">Outros</option>
+                    <option value="Outros">Others</option>
                   </select>
                 </div>
                 <div
@@ -95,7 +95,7 @@ export default function IncomeCard() {
               <div>
                 <input
                   type="text"
-                  placeholder="Descrição do ganho"
+                  placeholder="Name of Earnings"
                   className="rounded-md border p-2 w-full"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
