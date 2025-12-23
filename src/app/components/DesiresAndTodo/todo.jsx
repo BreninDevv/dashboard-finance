@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "../../i18n/languageContext";
 import React, { useState } from "react";
 import Image from "next/image";
 import ComponentTodo from "./componentTodo";
@@ -12,6 +13,7 @@ import Contas from "../../components/icons/money-dollar-box-line.svg";
 import Right from "../../components/icons/checkbox-circle-line.svg";
 
 const Todo = () => {
+  const { t } = useLanguage();
   const [on, setOn] = useState(false);
 
   const [taskType, setTaskType] = useState("");
@@ -70,7 +72,7 @@ const Todo = () => {
                 <Image src={Right} alt="Check logo" className="opacity-50" />
               </div>
               <div>
-                <span>No tasks available...</span>
+                <span>{t.noTransactions}</span>
               </div>
             </div>
           ) : (
@@ -95,35 +97,35 @@ const Todo = () => {
           onClick={() => setOn(false)}
         >
           <div
-            className="dark:bg-[#202433] duration-500 dark:text-white  bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto"
+            className="dark:bg-[#202433] duration-500 dark:text-white bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col p-4 gap-y-2">
               <div className="flex justify-between">
                 <div>
-                  <p>Task type</p>
+                  <p>{t.taskType}</p>
                   <select
                     className="border rounded"
                     value={taskType}
                     onChange={(e) => setTaskType(e.target.value)}
                   >
                     <option className="dark:bg-[#151722]" value="">
-                      Select…
+                      {t.select}
                     </option>
                     <option className="dark:bg-[#151722] " value="Alimentação">
-                      Food
+                      {t.food}
                     </option>
                     <option className="dark:bg-[#151722] " value="Transporte">
-                      Transport
+                      {t.transport}
                     </option>
                     <option className="dark:bg-[#151722] " value="Contas">
-                      Accounts
+                      {t.accounts}
                     </option>
                     <option className="dark:bg-[#151722] " value="Compras">
-                      Purchases
+                      {t.purshases}
                     </option>
                     <option className="dark:bg-[#151722] " value="Lazer">
-                      Leisure
+                      {t.leisures}
                     </option>
                   </select>
                 </div>
@@ -137,10 +139,10 @@ const Todo = () => {
               </div>
 
               <div>
-                <p>Task name</p>
+                <p>{t.taskName}</p>
                 <input
                   type="text"
-                  placeholder="Description..."
+                  placeholder={t.description}
                   className="border rounded w-full"
                   value={taskName}
                   onChange={(e) => setTaskName(e.target.value)}
@@ -148,7 +150,7 @@ const Todo = () => {
               </div>
 
               <div>
-                <p>Price</p>
+                <p>{t.price}</p>
                 <input
                   type="number"
                   className="border rounded w-full"
@@ -159,7 +161,7 @@ const Todo = () => {
               </div>
 
               <div className="self-center py-2 rounded-md text-center w-20 h-8">
-                <button onClick={createTask}>Create</button>
+                <button onClick={createTask}>{t.create}</button>
               </div>
             </div>
           </div>

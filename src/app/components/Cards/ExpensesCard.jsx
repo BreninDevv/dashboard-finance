@@ -1,11 +1,14 @@
 "use client";
 
+import { useLanguage } from "../../i18n/languageContext";
 import React, { useMemo, useState } from "react";
 import { useTransactions } from "../../../context/TransactionsContext";
 import Image from "next/image";
 import Send from "../../components/icons/send-plane-2-line.svg";
 
 export default function ExpensesCard() {
+  const { t } = useLanguage();
+
   const { transactions, addTransaction } = useTransactions();
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState("");
@@ -42,7 +45,7 @@ export default function ExpensesCard() {
       <div className="dark:bg-[#202433] duration-500 bg-white w-full h-40 rounded-3xl p-4  flex-col justify-between font-inter font-bold shadow-xl my-2 hidden sm:block">
         <div>
           <p className="dark:text-white font-normal text-xl text-black">
-            Total Expenses
+            {t.totalExpenses}
           </p>
         </div>
         <div className="pb-4">
@@ -56,7 +59,7 @@ export default function ExpensesCard() {
             onClick={() => setShowModal(true)}
           >
             <Image src={Send} alt="Send icon" width={20} />
-            Send
+            {t.send}
           </div>
         </div>
       </div>
@@ -67,29 +70,29 @@ export default function ExpensesCard() {
             <div className="flex flex-col gap-4 pb-6">
               <div className="flex justify-between">
                 <div className="flex flex-col gap-1 w-full">
-                  <p className="text-lg">Expense category</p>
+                  <p className="text-lg">{t.expenseCategory}</p>
                   <select
                     className="border rounded-md p-2"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
                     <option className="dark:bg-[#151722] " value="">
-                      Select...
+                      {t.select}
                     </option>
                     <option className="dark:bg-[#151722] " value="Alimentação">
-                      Food
+                      {t.food}
                     </option>
                     <option className="dark:bg-[#151722] " value="Transporte">
-                      Transport
+                      {t.transport}
                     </option>
                     <option className="dark:bg-[#151722] " value="Compras">
-                      Purshases
+                      {t.purshases}
                     </option>
                     <option className="dark:bg-[#151722] " value="Lazer">
-                      Leisures
+                      {t.leisures}
                     </option>
                     <option className="dark:bg-[#151722] " value="Contas">
-                      Accounts
+                      {t.accounts}
                     </option>
                   </select>
                 </div>
@@ -112,7 +115,7 @@ export default function ExpensesCard() {
               <div>
                 <input
                   type="text"
-                  placeholder="Name of expense"
+                  placeholder={t.nameOfExpense}
                   className="rounded-md border p-2 w-full"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
@@ -124,13 +127,13 @@ export default function ExpensesCard() {
                 className="w-25 bg-green-400 text-center rounded-lg p-1 text-lg cursor-pointer"
                 onClick={handleConfirm}
               >
-                Confirm
+                {t.confirm}
               </div>
               <div
                 className="w-25 bg-gray-400 text-center rounded-lg p-1 text-lg cursor-pointer"
                 onClick={() => setShowModal(false)}
               >
-                Cancel
+                {t.cancel}
               </div>
             </div>
           </div>

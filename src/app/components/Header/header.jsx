@@ -1,4 +1,6 @@
 "use client";
+
+import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import MenuHamburguer from "../../components/icons/menu-line.svg";
@@ -7,6 +9,7 @@ import DarkMode from "./headerDesktopComponents/darkMode";
 import EnPt from "./headerDesktopComponents/enPt";
 
 const Header = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const Header = () => {
     <>
       <header className="min-w-screen h-20 dark:bg-[#202433] duration-500 dark:text-white bg-white flex justify-between items-center p-2 shadow-lg fixed z-40">
         <div className="px-4">
-          <h1 className="font-bold text-3xl ">My Bank</h1>
+          <h1 className="font-bold text-3xl ">{t.myBank}</h1>
         </div>
         <div onClick={() => setIsOpen((prev) => !prev)}>
           <Image src={MenuHamburguer} alt="Menu Hamburguer" width={30} />

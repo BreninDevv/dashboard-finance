@@ -1,20 +1,22 @@
 "use client";
 
+import { useLanguage } from "../../i18n/languageContext";
 import React from "react";
 
 function Transactions({ transactions = [], onDelete }) {
+  const { t } = useLanguage();
   return (
     <div className="dark:bg-[#202433] duration-500 bg-white rounded-xl shadow-xl p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
       <div className="flex justify-between items-center pb-2">
-        <h2 className="text-lg font-bold">Transactions</h2>
-        <span className="text-sm text-gray-500">History</span>
+        <h2 className="text-lg font-bold">{t.transactions}</h2>
+        <span className="text-sm text-gray-500">{t.history}</span>
       </div>
 
       <div className="mt-4 max-h-30 overflow-auto">
         {transactions.length === 0 ? (
           <div className="flex justify-center text-center pt-5">
             <h1 className="font-medium text-gray-500 text-lg">
-              No transactions for now...
+              {t.noTransactions}
             </h1>
           </div>
         ) : (
@@ -49,7 +51,7 @@ function Transactions({ transactions = [], onDelete }) {
                     onClick={() => onDelete && onDelete(t.id)}
                     className="text-xs text-gray-500 hover:text-red-500 transition-colors"
                   >
-                    Delete
+                    {t.delete}
                   </button>
                 </div>
               </li>

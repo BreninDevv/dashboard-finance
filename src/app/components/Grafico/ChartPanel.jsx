@@ -5,7 +5,7 @@ import Graphic from "./graphic";
 import { useTransactions } from "../../../context/TransactionsContext";
 
 const months = [
-  "Jan",
+  "jan",
   "Fev",
   "Mar",
   "Abr",

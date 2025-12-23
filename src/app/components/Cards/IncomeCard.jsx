@@ -1,11 +1,13 @@
 "use client";
 
+import { useLanguage } from "../../i18n/languageContext";
 import React, { useMemo, useState } from "react";
 import { useTransactions } from "../../../context/TransactionsContext";
 import Image from "next/image";
 import Add from "../../components/icons/add-circle-line.svg";
 
 export default function IncomeCard() {
+  const { t } = useLanguage();
   const { transactions, addTransaction } = useTransactions();
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState("");
@@ -42,7 +44,7 @@ export default function IncomeCard() {
       <div className=" dark:bg-[#202433] duration-500 bg-white w-full h-40 rounded-3xl p-4 flex-col justify-between font-inter font-bold shadow-xl my-2 hidden sm:block ">
         <div>
           <p className="dark:text-white font-normal text-xl text-black">
-            Total Income
+            {t.totalIncome}
           </p>
         </div>
         <div className="pb-4">
@@ -67,17 +69,17 @@ export default function IncomeCard() {
             <div className="flex flex-col gap-4 pb-6">
               <div className="flex justify-between">
                 <div className="flex flex-col gap-1 w-full">
-                  <p className="text-lg">Income category</p>
+                  <p className="text-lg">{t.incomeCategory}</p>
                   <select
                     className="border rounded-md p-2"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
                     <option className="dark:bg-[#151722] " value="">
-                      Select...
+                      {t.select}
                     </option>
                     <option className="dark:bg-[#151722] " value="Salário">
-                      Salary
+                      {t.salary}
                     </option>
                     <option className="dark:bg-[#151722] " value="Freelance">
                       Freelance
@@ -86,7 +88,7 @@ export default function IncomeCard() {
                       Extra
                     </option>
                     <option className="dark:bg-[#151722] " value="Outros">
-                      Others
+                      {t.others}
                     </option>
                   </select>
                 </div>
@@ -109,7 +111,7 @@ export default function IncomeCard() {
               <div>
                 <input
                   type="text"
-                  placeholder="Name of Earnings"
+                  placeholder={t.nameOfEarning}
                   className="rounded-md border p-2 w-full"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
@@ -121,13 +123,13 @@ export default function IncomeCard() {
                 className="w-25 bg-green-400 text-center rounded-lg p-1 text-lg cursor-pointer"
                 onClick={handleConfirm}
               >
-                Confirm
+                {t.confirm}
               </div>
               <div
                 className="w-25 bg-gray-400 text-center rounded-lg p-1 text-lg cursor-pointer"
                 onClick={() => setShowModal(false)}
               >
-                Cancel
+                {t.cancel}
               </div>
             </div>
           </div>

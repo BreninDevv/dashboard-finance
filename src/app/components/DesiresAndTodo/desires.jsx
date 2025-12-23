@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState } from "react";
 import BlackEdit from "../../components/icons/edit-box-line-black.svg";
@@ -8,6 +9,7 @@ import Check from "../../components/icons/check-line.svg";
 import Right from "../../components/icons/checkbox-circle-line-white.svg";
 
 const Desires = () => {
+  const { t } = useLanguage();
   const [desires, setDesires] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [name, setName] = useState("");
@@ -68,7 +70,7 @@ const Desires = () => {
         <div className="flex justify-between">
           <div className="dark:text-black ">Jes</div>
           <div>
-            <h1 className="text-white text-xl">Desires Status</h1>
+            <h1 className="text-white text-xl">{t.desiresStatus}</h1>
           </div>
 
           <div>
@@ -88,7 +90,7 @@ const Desires = () => {
                 <Image src={Right} alt="Check logo" />
               </div>
               <div>
-                <p className="text-white">No desires here...</p>
+                <p className="text-white">{t.noDesires}</p>
               </div>
             </div>
           )}
@@ -134,7 +136,7 @@ const Desires = () => {
                       onClick={() => openAddModal(d)}
                       className="bg-white text-black px-3 py-1 rounded mt-2"
                     >
-                      Add Money
+                      {t.addMoney}
                     </button>
                   )}
                 </div>
@@ -147,11 +149,11 @@ const Desires = () => {
       {modalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
           <div className="dark:bg-[#202433] dark:text-white bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
-            <h2 className="text-xl font-semibold">Create desire</h2>
+            <h2 className="text-xl font-semibold">{t.createDesire}</h2>
 
             <input
               type="text"
-              placeholder="Desire name"
+              placeholder={t.desireName}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="border p-2 rounded"
@@ -159,7 +161,7 @@ const Desires = () => {
 
             <input
               type="number"
-              placeholder="Price"
+              placeholder={t.price}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               className="border p-2 rounded"
@@ -170,14 +172,14 @@ const Desires = () => {
                 className="px-4 py-2 bg-gray-300 dark:bg-gray-500 rounded"
                 onClick={() => setModalOpen(false)}
               >
-                Cancel
+                {t.cancel}
               </button>
 
               <button
                 className="px-4 py-2 bg-green-600 text-white rounded"
                 onClick={createDesire}
               >
-                Create
+                {t.create}
               </button>
             </div>
           </div>
@@ -188,13 +190,13 @@ const Desires = () => {
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
           <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
             <h2 className="text-xl font-semibold">
-              Add money for:{" "}
+              {t.AddMoneyFor}{" "}
               <span className="font-bold">{currentDesire?.name}</span>
             </h2>
 
             <input
               type="number"
-              placeholder="Value to add..."
+              placeholder={t.valueToAdd}
               value={addValue}
               onChange={(e) => setAddValue(e.target.value)}
               className="border p-2 rounded"
@@ -205,7 +207,7 @@ const Desires = () => {
                 className="px-4 py-2 bg-gray-300 rounded"
                 onClick={() => setAddModalOpen(false)}
               >
-                Cancel
+                {t.cancel}
               </button>
 
               <button

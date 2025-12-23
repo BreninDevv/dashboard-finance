@@ -1,11 +1,14 @@
 "use client";
 
+import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState } from "react";
 import Add from "../../components/icons/add-circle-line.svg";
 import Send from "../../components/icons/send-plane-2-line.svg";
 
 const InputsValue = ({ Name, balance = 0, onAdd }) => {
+  const { t } = useLanguage();
+
   const [send, setSend] = useState(false);
   const [add, setAdd] = useState(false);
 
@@ -42,7 +45,7 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
               onClick={() => setSend((prev) => !prev)}
             >
               <Image src={Send} alt="Send icon" width={20} />
-              Send
+              {t.send}
             </div>
           </div>
         </div>
@@ -59,12 +62,12 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
                     value={sendCategory}
                     onChange={(e) => setSendCategory(e.target.value)}
                   >
-                    <option value="">Selecione...</option>
-                    <option value="Alimentação">Alimentação</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Compras">Compras</option>
-                    <option value="Lazer">Lazer</option>
-                    <option value="Contas">Contas</option>
+                    <option value="">{t.select}</option>
+                    <option value="Alimentação">{t.food}</option>
+                    <option value="Transporte">{t.transport}</option>
+                    <option value="Compras">{t.purshases}</option>
+                    <option value="Lazer">{t.leisures}</option>
+                    <option value="Contas">{t.accounts}</option>
                   </select>
                 </div>
                 <div
@@ -88,7 +91,7 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
               <div>
                 <input
                   type="text"
-                  placeholder="Descrição do gasto"
+                  placeholder={t.nameOfExpense}
                   className="rounded-md border p-2 w-full"
                   value={sendDesc}
                   onChange={(e) => setSendDesc(e.target.value)}
@@ -115,13 +118,13 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
                   setSendDesc("");
                 }}
               >
-                Confirm
+                {t.confirm}
               </div>
               <div
                 className="w-25 bg-gray-400 text-center rounded-lg p-1 text-lg cursor-pointer"
                 onClick={() => setSend(false)}
               >
-                Cancel
+                {t.cancel}
               </div>
             </div>
           </div>
@@ -135,17 +138,17 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
             <div className="flex flex-col gap-4 pb-6">
               <div className="flex justify-between">
                 <div className="flex flex-col gap-1 w-full">
-                  <p className="text-lg">Categoria do ganho</p>
+                  <p className="text-lg">{t.incomeCategory}</p>
                   <select
                     className="border rounded-md p-2"
                     value={addCategory}
                     onChange={(e) => setAddCategory(e.target.value)}
                   >
-                    <option value="">Selecione...</option>
-                    <option value="Salário">Salário</option>
+                    <option value="">{t.select}</option>
+                    <option value="Salário">{t.salary}</option>
                     <option value="Freelance">Freelance</option>
                     <option value="Extra">Extra</option>
-                    <option value="Outros">Outros</option>
+                    <option value="Outros">{t.others}</option>
                   </select>
                 </div>
                 <div
@@ -169,7 +172,7 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
               <div>
                 <input
                   type="text"
-                  placeholder="Descrição do ganho"
+                  placeholder={t.incomeCategory}
                   className="rounded-md border p-2 w-full"
                   value={addDesc}
                   onChange={(e) => setAddDesc(e.target.value)}
@@ -196,13 +199,13 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
                   setAddDesc("");
                 }}
               >
-                Confirm
+                {t.confirm}
               </div>
               <div
                 className="w-25 bg-gray-400 text-center rounded-lg p-1 text-lg cursor-pointer"
                 onClick={() => setAdd(false)}
               >
-                Cancel
+                {t.cancel}
               </div>
             </div>
           </div>
