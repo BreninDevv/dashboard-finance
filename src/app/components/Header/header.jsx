@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="min-w-screen h-20 bg-white flex justify-between items-center p-2 shadow-lg fixed z-40">
+      <header className="min-w-screen h-20 dark:bg-[#202433] duration-500 dark:text-white bg-white flex justify-between items-center p-2 shadow-lg fixed z-40">
         <div className="px-4">
           <h1 className="font-bold text-3xl ">My Bank</h1>
         </div>
@@ -46,7 +46,7 @@ const Header = () => {
       </div>
 
       <div
-        className={`absolute h-full bg-white shadow-lg w-40 left-0 top-0 z-50 transform transition-transform duration-200 ${
+        className={`absolute h-full dark:bg-[#202433] bg-white shadow-lg w-40 left-0 top-0 z-50 transform transition-transform duration-200 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

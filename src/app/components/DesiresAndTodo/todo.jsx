@@ -54,7 +54,7 @@ const Todo = () => {
 
   return (
     <>
-      <div className="bg-white min-w-32 h-56  overflow-hidden rounded-xl shadow-xl px-4 w-full">
+      <div className="dark:bg-[#202433] duration-500 bg-white min-w-32 h-56 dark:text-white overflow-hidden rounded-xl shadow-xl px-4 w-full">
         <div className="flex justify-between py-4">
           <h1 className="text-xl font-bold">Todo List</h1>
 
@@ -63,9 +63,9 @@ const Todo = () => {
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 pb-4 bg-[#e5e5ee] rounded-md min-h-32 max-h-36 p-2 overflow-auto">
+        <div className="flex flex-col gap-2 pb-4 dark:bg-[#383e55] bg-[#e5e5ee] rounded-md min-h-32 max-h-36 p-2 overflow-auto">
           {tasks.length === 0 ? (
-            <div className="text-center text-gray-500 flex flex-col items-center py-4">
+            <div className="text-center  text-gray-500 flex flex-col items-center py-4">
               <div>
                 <Image src={Right} alt="Check logo" className="opacity-50" />
               </div>
@@ -95,7 +95,7 @@ const Todo = () => {
           onClick={() => setOn(false)}
         >
           <div
-            className="bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto"
+            className="dark:bg-[#202433] duration-500 dark:text-white  bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col p-4 gap-y-2">
@@ -107,12 +107,24 @@ const Todo = () => {
                     value={taskType}
                     onChange={(e) => setTaskType(e.target.value)}
                   >
-                    <option value="">Select…</option>
-                    <option value="Alimentação">Food</option>
-                    <option value="Transporte">Transport</option>
-                    <option value="Contas">Accounts</option>
-                    <option value="Compras">Purchases</option>
-                    <option value="Lazer">Leisure</option>
+                    <option className="dark:bg-[#151722]" value="">
+                      Select…
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Alimentação">
+                      Food
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Transporte">
+                      Transport
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Contas">
+                      Accounts
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Compras">
+                      Purchases
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Lazer">
+                      Leisure
+                    </option>
                   </select>
                 </div>
 
@@ -128,6 +140,7 @@ const Todo = () => {
                 <p>Task name</p>
                 <input
                   type="text"
+                  placeholder="Description..."
                   className="border rounded w-full"
                   value={taskName}
                   onChange={(e) => setTaskName(e.target.value)}
@@ -139,6 +152,7 @@ const Todo = () => {
                 <input
                   type="number"
                   className="border rounded w-full"
+                  placeholder="R$120"
                   value={taskPrice}
                   onChange={(e) => setTaskPrice(e.target.value)}
                 />

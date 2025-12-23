@@ -39,12 +39,16 @@ export default function IncomeCard() {
 
   return (
     <>
-      <div className="bg-white w-full h-40 rounded-3xl p-4 flex-col justify-between font-inter font-bold shadow-xl my-2 hidden sm:block ">
+      <div className=" dark:bg-[#202433] duration-500 bg-white w-full h-40 rounded-3xl p-4 flex-col justify-between font-inter font-bold shadow-xl my-2 hidden sm:block ">
         <div>
-          <p className="font-normal text-xl text-black">Total Income</p>
+          <p className="dark:text-white font-normal text-xl text-black">
+            Total Income
+          </p>
         </div>
         <div className="pb-4">
-          <span className="font-inter text-black text-3xl">R${formatted}</span>
+          <span className="dark:text-white font-inter text-black text-3xl">
+            R${formatted}
+          </span>
         </div>
         <div className="flex justify-end">
           <div
@@ -59,7 +63,7 @@ export default function IncomeCard() {
 
       {showModal && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 ">
-          <div className="bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto py-4 px-6">
+          <div className="dark:bg-[#202433] duration-500 dark:text-white bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto py-4 px-6">
             <div className="flex flex-col gap-4 pb-6">
               <div className="flex justify-between">
                 <div className="flex flex-col gap-1 w-full">
@@ -69,11 +73,21 @@ export default function IncomeCard() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option value="">Select...</option>
-                    <option value="Salário">Salary</option>
-                    <option value="Freelance">Freelance</option>
-                    <option value="Extra">Extra</option>
-                    <option value="Outros">Others</option>
+                    <option className="dark:bg-[#151722] " value="">
+                      Select...
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Salário">
+                      Salary
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Freelance">
+                      Freelance
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Extra">
+                      Extra
+                    </option>
+                    <option className="dark:bg-[#151722] " value="Outros">
+                      Others
+                    </option>
                   </select>
                 </div>
                 <div

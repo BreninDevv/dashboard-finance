@@ -4,7 +4,7 @@ import React from "react";
 
 function Transactions({ transactions = [], onDelete }) {
   return (
-    <div className="bg-white rounded-xl shadow-xl p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
+    <div className="dark:bg-[#202433] duration-500 bg-white rounded-xl shadow-xl p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
       <div className="flex justify-between items-center pb-2">
         <h2 className="text-lg font-bold">Transactions</h2>
         <span className="text-sm text-gray-500">History</span>
@@ -22,10 +22,10 @@ function Transactions({ transactions = [], onDelete }) {
             {transactions.map((t) => (
               <li
                 key={t.id}
-                className="flex justify-between items-center border rounded p-3 hover:bg-gray-50 transition-colors"
+                className="flex justify-between items-center border rounded p-3 dark:hover:bg-[#20243c]  hover:bg-gray-50 transition-colors"
               >
                 <div className="flex-1">
-                  <div className="font-semibold text-gray-800">
+                  <div className="font-semibold text-gray-800 dark:text-white">
                     {t.description || t.category}
                   </div>
                   <div className="flex gap-2 items-center mt-1">
