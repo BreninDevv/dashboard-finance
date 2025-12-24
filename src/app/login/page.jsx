@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
+import Login from "./login";
+import Register from "./register";
 
 const Page = () => {
   const [login, setLogin] = useState(false);
 
   return (
     <>
-      <div className="flex h-screen items-center justify-center bg-gray-900 pb-20 font-inter">
+      <div className="flex h-screen items-center justify-center bg-gray-900 pb-20 font-inter duration-300">
         <div className="grid w-full max-w-4xl h-120  grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
           <div className="flex flex-col items-center justify-center p-12 bg-gradient-to-br from-blue-800 to-pink-200">
             <div className="pb-40 flex flex-col gap-2">
@@ -25,7 +27,7 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col p-8 bg-[#1a1b23]">
-            <div className="flex-1 flex justify-center pb-20">
+            <div className="flex-1 flex flex-col items-center pb-20">
               <div className="w-60 h-10 bg-[#2d2f3d] flex justify-center rounded-xl text-gray-300">
                 <div
                   className={`text-center pt-2 w-30 rounded-xl  ${
@@ -48,6 +50,15 @@ const Page = () => {
                   Register
                 </div>
               </div>
+              {!login ? (
+                <div className="duration-300">
+                  <Login />
+                </div>
+              ) : (
+                <div className="duration-300">
+                  <Register />
+                </div>
+              )}
             </div>
           </div>
         </div>
