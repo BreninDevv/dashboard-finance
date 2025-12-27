@@ -56,7 +56,7 @@ const Todo = () => {
 
   return (
     <>
-      <div className="group duration-500 bg-white/70 dark:bg-[#161B22]/40 backdrop-blur-xl border border-white/40 dark:border-white/10 w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
+      <div className="group duration-500 bg-gradient-to-bl to-[#111827] from-[#1f2937] border-[#577886] border backdrop-blur-xl   w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
         <div className="flex justify-between py-4 items-center">
           <h1 className="text-xl font-extrabold text-slate-800 dark:text-white">
             Todo List

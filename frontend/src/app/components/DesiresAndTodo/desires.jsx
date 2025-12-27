@@ -4,6 +4,7 @@ import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState } from "react";
 import BlackEdit from "../../components/icons/edit-box-line-black.svg";
+import WhiteEdit from "../../components/icons/edit-box-line-white.svg";
 import TrashWhite from "../../components/icons/delete-bin-6-line-white.svg";
 import Check from "../../components/icons/check-line.svg";
 import Right from "../../components/icons/checkbox-circle-line-white.svg";
@@ -21,16 +22,13 @@ const Desires = () => {
 
   function createDesire() {
     if (!name || !price) return;
-
     const newDesire = {
       id: Date.now(),
       name,
       price: Number(price),
       current: 0,
     };
-
     setDesires([...desires, newDesire]);
-
     setName("");
     setPrice("");
     setModalOpen(false);
@@ -43,179 +41,238 @@ const Desires = () => {
 
   function addMoney() {
     if (!addValue || !currentDesire) return;
-
     const updated = desires.map((d) =>
       d.id === currentDesire.id
         ? { ...d, current: Math.min(d.current + Number(addValue), d.price) }
         : d
     );
-
     setDesires(updated);
-
     setAddValue("");
     setCurrentDesire(null);
     setAddModalOpen(false);
   }
+
   function deleteDesire(id) {
     setDesires(desires.filter((d) => d.id !== id));
   }
 
   return (
     <>
-      <div
-        className={`bg-black min-w-40 max-h-56 min-h-56 xl:max-h-64 xl:min-h-56 rounded-xl shadow-xl px-4 mb-4 gap-y-2 py-4 w-full ${
-          desires.length > 0 ? "overflow-y-scroll" : ""
-        }`}
-      >
-        <div className="flex justify-between">
-          <div className="dark:text-black ">Jes</div>
-          <div>
-            <h1 className="text-white text-xl">{t.desiresStatus}</h1>
-          </div>
-
-          <div>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="cursor-pointer"
-            >
-              <Image src={BlackEdit} alt="Black Edit" />
-            </button>
-          </div>
+      {/* CONTAINER PRINCIPAL: Mantém o tamanho fixo e não deixa o layout vazar */}
+      <div className="bg-gradient-to-bl to-[#111827] from-[#1f2937] border-[#577886] border min-h-56 max-h-56 xl:min-h-56 xl:max-h-56 rounded-xl shadow-xl px-4 py-4 w-full flex flex-col overflow-hidden">
+        {/* HEADER: Fica fixo no topo, fora da área de scroll */}
+        <div className="flex justify-between items-center mb-4 flex-shrink-0">
+          <div className="opacity-0 w-6">Jes</div>{" "}
+          {/* Espaçador para centralizar título se necessário */}
+          <h1 className="text-white text-xl font-bold">{t.desiresStatus}</h1>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="cursor-pointer hover:opacity-80 transition-opacity z-50"
+          >
+            <Image
+              src={WhiteEdit}
+              alt="Edit"
+              className="group-hover:opacity-100"
+            />
+          </button>
         </div>
 
-        <div className="flex flex-col items-center ">
-          {desires.length === 0 && (
-            <div className="flex flex-col items-center py-12 opacity-50">
-              <div>
-                <Image src={Right} alt="Check logo" />
-              </div>
-              <div>
-                <p className="text-white">{t.noDesires}</p>
-              </div>
+        <div className="flex-1 overflow-y-auto custom-scrollbar pr-1">
+          {desires.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-6 opacity-50 h-full">
+              <Image src={Right} alt="Check logo" width={32} />
+              <p className="text-white mt-2 text-sm">{t.noDesires}</p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-y-3 pb-2">
+              {desires.map((d) => {
+                const percent = Math.min((d.current / d.price) * 100, 100);
+                const isCompleted = d.current >= d.price;
+
+                return (
+                  <div
+                    key={d.id}
+                    className="bg-gray-900 p-3 rounded-lg text-white flex flex-col gap-y-2 border border-white/5"
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium truncate max-w-[100px]">
+                        {d.name}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        {isCompleted
+                          ? "COMPLETED!"
+                          : `R$ ${d.price.toLocaleString()}`}
+                      </span>
+                      <button
+                        onClick={() => deleteDesire(d.id)}
+                        className="hover:opacity-70"
+                      >
+                        <Image
+                          src={isCompleted ? Check : TrashWhite}
+                          alt="Action"
+                          width={16}
+                        />
+                      </button>
+                    </div>
+
+                    <div className="w-full bg-gray-700 rounded-full h-2">
+                      <div
+                        style={{ width: `${percent}%` }}
+                        className={`h-2 rounded-full transition-all duration-500 ${
+                          isCompleted ? "bg-green-500" : "bg-white"
+                        }`}
+                      ></div>
+                    </div>
+
+                    {!isCompleted && (
+                      <button
+                        onClick={() => openAddModal(d)}
+                        className="bg-white text-black text-[10px] font-bold uppercase py-1.5 rounded mt-1 hover:bg-gray-200 transition-colors"
+                      >
+                        {t.addMoney}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
-
-          <div className="w-full mt-4 flex flex-col gap-y-3">
-            {desires.map((d) => {
-              const percent = Math.min((d.current / d.price) * 100, 100);
-              const isCompleted = d.current >= d.price;
-
-              return (
-                <div
-                  key={d.id}
-                  className="bg-gray-900 p-3 rounded text-white flex flex-col gap-y-2"
-                >
-                  <div className="flex justify-between items-center">
-                    <span>{d.name}</span>
-
-                    <span>
-                      {isCompleted
-                        ? "COMPLETED!"
-                        : `R$ ${d.price.toLocaleString()}`}
-                    </span>
-
-                    <button onClick={() => deleteDesire(d.id)}>
-                      <Image
-                        src={isCompleted ? Check : TrashWhite}
-                        alt={isCompleted ? "Completed" : "Trash"}
-                      />
-                    </button>
-                  </div>
-
-                  <div className="w-full bg-gray-700 rounded-full h-3 mt-2">
-                    <div
-                      style={{ width: `${percent}%` }}
-                      className={`h-3 rounded-full transition-all ${
-                        isCompleted ? "bg-green-500" : "bg-white"
-                      }`}
-                    ></div>
-                  </div>
-
-                  {!isCompleted && (
-                    <button
-                      onClick={() => openAddModal(d)}
-                      className="bg-white text-black px-3 py-1 rounded mt-2"
-                    >
-                      {t.addMoney}
-                    </button>
-                  )}
-                </div>
-              );
-            })}
-          </div>
         </div>
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
-          <div className="dark:bg-[#202433] dark:text-white bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
-            <h2 className="text-xl font-semibold">{t.createDesire}</h2>
+        <div
+          className="fixed inset-0 bg-white/20 dark:bg-black/60 backdrop-blur-md flex items-center justify-center z-[999] p-4 transition-all"
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="bg-white/90 dark:bg-[#161B22]/90 backdrop-blur-2xl text-slate-900 dark:text-white w-full max-w-[340px] rounded-[2.5rem] shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden py-8 px-8 transform transition-all animate-in fade-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex flex-col gap-6">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-black tracking-tight text-slate-800 dark:text-white">
+                  {t.createDesire}
+                </h2>
+                <button
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors p-2 bg-black/5 dark:bg-white/5 rounded-full"
+                  onClick={() => setModalOpen(false)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
 
-            <input
-              type="text"
-              placeholder={t.desireName}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="border p-2 rounded"
-            />
+              <div className="space-y-4">
+                <div>
+                  <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-400 mb-2 ml-1">
+                    {t.desireName}
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="Ex: Novo MacBook"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full bg-slate-100/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all font-medium text-slate-800 dark:text-white placeholder:text-slate-400"
+                  />
+                </div>
 
-            <input
-              type="number"
-              placeholder={t.price}
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              className="border p-2 rounded"
-            />
+                <div>
+                  <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-400 mb-2 ml-1">
+                    {t.price}
+                  </p>
+                  <input
+                    type="number"
+                    placeholder="R$ 0,00"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    className="w-full bg-slate-100/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all font-bold text-slate-800 dark:text-white placeholder:text-slate-400"
+                  />
+                </div>
+              </div>
 
-            <div className="flex justify-end gap-2 mt-2">
-              <button
-                className="px-4 py-2 bg-gray-300 dark:bg-gray-500 rounded"
-                onClick={() => setModalOpen(false)}
-              >
-                {t.cancel}
-              </button>
+              <div className="flex gap-3 pt-2">
+                <button
+                  className="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl py-4 font-black shadow-lg shadow-emerald-500/20 active:scale-95 transition-all uppercase text-[11px] tracking-widest"
+                  onClick={createDesire}
+                >
+                  {t.create}
+                </button>
 
-              <button
-                className="px-4 py-2 bg-green-600 text-white rounded"
-                onClick={createDesire}
-              >
-                {t.create}
-              </button>
+                <button
+                  className="flex-1 bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-white/10 rounded-2xl py-4 font-bold hover:bg-slate-200 dark:hover:bg-white/10 active:scale-95 transition-all uppercase text-[11px] tracking-widest"
+                  onClick={() => setModalOpen(false)}
+                >
+                  {t.cancel}
+                </button>
+              </div>
             </div>
           </div>
         </div>
       )}
 
       {addModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 ">
-          <div className="bg-white p-6 rounded-lg w-80 flex flex-col gap-3 max-h-[90vh] overflow-auto">
-            <h2 className="text-xl font-semibold">
-              {t.AddMoneyFor}{" "}
-              <span className="font-bold">{currentDesire?.name}</span>
-            </h2>
+        <div
+          className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-md flex items-center justify-center z-[999] p-4"
+          onClick={() => setAddModalOpen(false)}
+        >
+          <div
+            className="bg-white/90 dark:bg-[#161B22]/90 backdrop-blur-2xl w-full max-w-[340px] rounded-[2.5rem] shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden p-8 transform transition-all animate-in fade-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex flex-col gap-6">
+              <div className="flex justify-between items-start">
+                <h2 className="text-xl font-black tracking-tight text-slate-800 dark:text-white">
+                  {t.AddMoneyFor}
+                  <span className="block text-emerald-500 text-lg mt-1">
+                    {currentDesire?.name}
+                  </span>
+                </h2>
+              </div>
 
-            <input
-              type="number"
-              placeholder={t.valueToAdd}
-              value={addValue}
-              onChange={(e) => setAddValue(e.target.value)}
-              className="border p-2 rounded"
-            />
+              <div className="space-y-4">
+                <div className="relative">
+                  <label className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-400 mb-2 block ml-1">
+                    {t.valueToAdd}
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="R$ 0,00"
+                    value={addValue}
+                    onChange={(e) => setAddValue(e.target.value)}
+                    /* Removi as bordas sólidas e adicionei o estilo glass nos inputs */
+                    className="w-full bg-slate-100/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all font-bold text-slate-800 dark:text-white placeholder:text-slate-400"
+                  />
+                </div>
+              </div>
 
-            <div className="flex justify-end gap-2 mt-2">
-              <button
-                className="px-4 py-2 bg-gray-300 rounded"
-                onClick={() => setAddModalOpen(false)}
-              >
-                {t.cancel}
-              </button>
+              <div className="flex gap-3">
+                <button
+                  className="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl py-4 font-black shadow-lg shadow-emerald-500/20 active:scale-95 transition-all uppercase text-[11px] tracking-widest"
+                  onClick={addMoney}
+                >
+                  {t.add || "Add"}
+                </button>
 
-              <button
-                className="px-4 py-2 bg-green-600 text-white rounded"
-                onClick={addMoney}
-              >
-                Add
-              </button>
+                <button
+                  className="flex-1 bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-white/10 rounded-2xl py-4 font-bold hover:bg-slate-200 dark:hover:bg-white/10 active:scale-95 transition-all uppercase text-[11px] tracking-widest"
+                  onClick={() => setAddModalOpen(false)}
+                >
+                  {t.cancel}
+                </button>
+              </div>
             </div>
           </div>
         </div>
