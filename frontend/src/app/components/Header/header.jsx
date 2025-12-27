@@ -4,7 +4,7 @@ import { useAuth } from "../../context/authContext";
 import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import MenuHamburguer from "../../components/icons/menu-line.svg";
+import MenuHamburguer from "../icons/menu-line.svg";
 import Avatar from "./headerDesktopComponents/avatar";
 import DarkMode from "./headerDesktopComponents/darkMode";
 import EnPt from "./headerDesktopComponents/enPt";
@@ -26,7 +26,6 @@ const Header = () => {
       if (original !== null) document.body.style.overflow = original;
     };
   }, [isOpen]);
-  const { user } = useAuth();
 
   return (
     <>
