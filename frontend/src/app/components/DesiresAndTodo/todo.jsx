@@ -56,23 +56,38 @@ const Todo = () => {
 
   return (
     <>
-      <div className="dark:bg-[#202433] duration-500 bg-white min-w-32 h-56 dark:text-white overflow-hidden rounded-xl shadow-xl px-4 w-full">
-        <div className="flex justify-between py-4">
-          <h1 className="text-xl font-bold">Todo List</h1>
+      <div className="group duration-500 bg-white/70 dark:bg-[#161B22]/40 backdrop-blur-xl border border-white/40 dark:border-white/10 w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
+        <div className="flex justify-between py-4 items-center">
+          <h1 className="text-xl font-extrabold text-slate-800 dark:text-white">
+            Todo List
+          </h1>
 
-          <button onClick={() => setOn(true)} className="cursor-pointer">
-            <Image src={EditLogo} alt="Edit Logo" width={22} />
+          <button
+            onClick={() => setOn(true)}
+            className="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+          >
+            <Image
+              src={EditLogo}
+              alt="Edit Logo"
+              width={20}
+              className="opacity-70 dark:brightness-110"
+            />
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 pb-4 dark:bg-[#383e55] bg-[#e5e5ee] rounded-md min-h-32 max-h-36 p-2 overflow-auto">
+        <div className="flex flex-col gap-2 pb-4 bg-slate-200  dark:bg-white/5 border border-slate-200/50 dark:border-white/5 rounded-2xl min-h-32 max-h-36 p-2 overflow-auto custom-scrollbar">
           {tasks.length === 0 ? (
-            <div className="text-center  text-gray-500 flex flex-col items-center py-4">
+            <div className="text-center text-slate-400 dark:text-slate-500 flex flex-col items-center py-4">
               <div>
-                <Image src={Right} alt="Check logo" className="opacity-50" />
+                <Image
+                  src={Right}
+                  alt="Check logo"
+                  className="opacity-30"
+                  width={30}
+                />
               </div>
               <div>
-                <span>{t.noTransactions}</span>
+                <span className="text-xs font-medium">{t.noTasks}</span>
               </div>
             </div>
           ) : (
@@ -93,76 +108,118 @@ const Todo = () => {
 
       {on && (
         <div
-          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 "
+          className="fixed inset-0 bg-white/20 dark:bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all"
           onClick={() => setOn(false)}
         >
           <div
-            className="dark:bg-[#202433] duration-500 dark:text-white bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto"
+            className="bg-white/80 dark:bg-[#0B0E14]/90 backdrop-blur-2xl text-slate-900 dark:text-white w-full max-w-[340px] rounded-[2.5rem] shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden py-8 px-8 transform transition-all animate-in fade-in zoom-in duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col p-4 gap-y-2">
-              <div className="flex justify-between">
+            <div className="flex flex-col gap-5">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-extrabold tracking-tight text-slate-800 dark:text-white">
+                  Nova Tarefa
+                </h2>
+                <button
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors p-2 bg-black/5 dark:bg-white/5 rounded-full"
+                  onClick={() => setOn(false)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-4">
                 <div>
-                  <p>{t.taskType}</p>
+                  <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">
+                    {t.taskType}
+                  </p>
                   <select
-                    className="border rounded"
+                    className="w-full bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 focus:ring-2 focus:ring-blue-500/30 outline-none transition-all appearance-none cursor-pointer font-medium text-slate-700 dark:text-slate-200"
                     value={taskType}
                     onChange={(e) => setTaskType(e.target.value)}
                   >
-                    <option className="dark:bg-[#151722]" value="">
+                    <option value="" className="bg-white dark:bg-[#0B0E14]">
                       {t.select}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Alimentação">
+                    <option
+                      value="Alimentação"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.food}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Transporte">
+                    <option
+                      value="Transporte"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.transport}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Contas">
+                    <option
+                      value="Contas"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.accounts}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Compras">
+                    <option
+                      value="Compras"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.purshases}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Lazer">
+                    <option
+                      value="Lazer"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.leisures}
                     </option>
                   </select>
                 </div>
 
-                <span
-                  className="text-2xl cursor-pointer"
-                  onClick={() => setOn(false)}
-                >
-                  X
-                </span>
+                <div>
+                  <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">
+                    {t.taskName}
+                  </p>
+                  <input
+                    type="text"
+                    placeholder={t.description}
+                    className="w-full bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 focus:ring-2 focus:ring-blue-500/30 outline-none transition-all placeholder:text-slate-400 font-medium text-slate-700 dark:text-white"
+                    value={taskName}
+                    onChange={(e) => setTaskName(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">
+                    {t.price}
+                  </p>
+                  <input
+                    type="number"
+                    placeholder="R$ 0,00"
+                    className="w-full bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 focus:ring-2 focus:ring-blue-500/30 outline-none transition-all placeholder:text-slate-400 font-bold text-slate-800 dark:text-white"
+                    value={taskPrice}
+                    onChange={(e) => setTaskPrice(e.target.value)}
+                  />
+                </div>
               </div>
 
-              <div>
-                <p>{t.taskName}</p>
-                <input
-                  type="text"
-                  placeholder={t.description}
-                  className="border rounded w-full"
-                  value={taskName}
-                  onChange={(e) => setTaskName(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <p>{t.price}</p>
-                <input
-                  type="number"
-                  className="border rounded w-full"
-                  placeholder="R$120"
-                  value={taskPrice}
-                  onChange={(e) => setTaskPrice(e.target.value)}
-                />
-              </div>
-
-              <div className="self-center py-2 rounded-md text-center w-20 h-8">
-                <button onClick={createTask}>{t.create}</button>
-              </div>
+              <button
+                onClick={createTask}
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-2xl py-4 font-black shadow-lg shadow-blue-500/20 hover:opacity-95 active:scale-95 transition-all uppercase text-[10px] tracking-[0.15em] mt-2"
+              >
+                {t.create}
+              </button>
             </div>
           </div>
         </div>

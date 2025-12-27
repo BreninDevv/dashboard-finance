@@ -24,7 +24,7 @@ const InputsValue = ({ Name, balance = 0, onAdd }) => {
 
   return (
     <>
-      <div className="bg-sky-500 w-full h-40 rounded-3xl p-4 flex flex-col justify-between font-inter font-bold shadow-xl my-2">
+      <div className="bg-gradient-to-tr to-[#2E5BFF] from-[#6221D1] w-full h-40 rounded-[2rem] p-4 flex flex-col justify-between font-inter font-bold shadow-xl my-2">
         <div>
           <p className="font-normal text-xl text-white">{Name}</p>
         </div>

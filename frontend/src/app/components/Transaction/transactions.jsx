@@ -6,7 +6,7 @@ import React from "react";
 function Transactions({ transactions = [], onDelete }) {
   const { t } = useLanguage();
   return (
-    <div className="dark:bg-[#202433] duration-500 bg-white rounded-xl shadow-xl p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
+    <div className="dark:bg-[#1E293B] duration-500 bg-white rounded-xl shadow-xl p-4 min-h-56 max-h-56 xl:min-h-56 xl:max-h-64">
       <div className="flex justify-between items-center pb-2">
         <h2 className="text-lg font-bold">{t.transactions}</h2>
         <span className="text-sm text-gray-500">{t.history}</span>

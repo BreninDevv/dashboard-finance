@@ -1,10 +1,9 @@
 "use client";
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  // Inicialização "Lazy": o código dentro da função só roda UMA vez
   const [user, setUser] = useState(() => {
     if (typeof window !== "undefined") {
       const savedUser = localStorage.getItem("user");
@@ -17,8 +16,6 @@ export function AuthProvider({ children }) {
     }
     return null;
   });
-
-  // Remova o useEffect antigo que estava dando erro!
 
   function login(userData) {
     localStorage.setItem("user", JSON.stringify(userData));

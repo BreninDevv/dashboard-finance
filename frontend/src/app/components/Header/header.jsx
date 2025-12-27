@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "../../context/authContext";
+// import { useAuth } from "../../context/authContext";
 import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";

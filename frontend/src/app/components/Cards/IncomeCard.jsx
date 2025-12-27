@@ -41,95 +41,130 @@ export default function IncomeCard() {
 
   return (
     <>
-      <div className=" dark:bg-[#202433] duration-500 bg-white w-full h-40 rounded-3xl p-4 flex-col justify-between font-inter font-bold shadow-xl my-2 hidden sm:block ">
+      <div className="group duration-500 bg-white/70 dark:bg-[#161B22]/40 backdrop-blur-xl border border-white/40 dark:border-white/10 w-full h-40 rounded-[2rem] p-6 flex flex-col justify-between font-inter shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-2xl my-2 hidden sm:flex transition-all hover:border-emerald-500/40 hover:shadow-emerald-500/10">
         <div>
-          <p className="dark:text-white font-normal text-xl text-black">
+          <p className="text-slate-500 dark:text-slate-400 font-semibold text-[10px] uppercase tracking-[0.2em]">
             {t.totalIncome}
           </p>
         </div>
-        <div className="pb-4">
-          <span className="dark:text-white font-inter text-black text-3xl">
-            R${formatted}
+        <div className="pb-2">
+          <span className="text-slate-900 dark:text-white font-extrabold text-4xl tracking-tight">
+            R$ {formatted}
           </span>
         </div>
         <div className="flex justify-end">
-          <div
-            className="bg-green-500 w-20 text-center text-white rounded-2xl p-2 flex gap-1 justify-center items-center cursor-pointer hover:opacity-80"
+          <button
+            className="bg-emerald-500 dark:bg-emerald-500/10 border border-emerald-500/20 w-fit px-5 py-2 text-center text-white  rounded-xl flex gap-2 justify-center items-center cursor-pointer dark:hover:bg-emerald-500 hover:bg-emerald-300 hover:text-white transition-all duration-300 active:scale-95 group/btn"
             onClick={() => setShowModal(true)}
           >
-            <Image src={Add} alt="Add icon" width={25} />
-            Add
-          </div>
+            <Image
+              src={Add}
+              alt="Add icon"
+              width={16}
+              className="dark:brightness-110 group-hover/btn:brightness-200 transition-all"
+            />
+            <span className="text-[11px] font-black uppercase tracking-wider">
+              {t.add || "Add"}
+            </span>
+          </button>
         </div>
       </div>
-
       {showModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 ">
-          <div className="dark:bg-[#202433] duration-500 dark:text-white bg-white w-full max-w-[320px] h-auto rounded-xl shadow max-h-[90vh] overflow-auto py-4 px-6">
-            <div className="flex flex-col gap-4 pb-6">
-              <div className="flex justify-between">
-                <div className="flex flex-col gap-1 w-full">
-                  <p className="text-lg">{t.incomeCategory}</p>
+        <div className="fixed inset-0 bg-white/20 dark:bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all">
+          <div className="bg-white/80 dark:bg-[#0B0E14]/80 text-slate-900 dark:text-white backdrop-blur-2xl w-full max-w-[360px] rounded-[2.5rem] shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden py-8 px-8 transform transition-all animate-in fade-in zoom-in duration-300">
+            <div className="flex flex-col gap-6">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-extrabold tracking-tight text-slate-800 dark:text-white">
+                  {t.incomeCategory}
+                </h2>
+                <button
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors p-2 bg-black/5 dark:bg-white/5 rounded-full"
+                  onClick={() => setShowModal(false)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div className="relative">
                   <select
-                    className="border rounded-md p-2"
+                    className="w-full bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 focus:ring-2 focus:ring-[#2E5BFF]/30 outline-none transition-all appearance-none cursor-pointer font-medium text-slate-700 dark:text-slate-200"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option className="dark:bg-[#151722] " value="">
+                    <option value="" className="bg-white dark:bg-[#0B0E14]">
                       {t.select}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Salário">
+                    <option
+                      value="Salário"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.salary}
                     </option>
-                    <option className="dark:bg-[#151722] " value="Freelance">
+                    <option
+                      value="Freelance"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       Freelance
                     </option>
-                    <option className="dark:bg-[#151722] " value="Extra">
+                    <option
+                      value="Extra"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       Extra
                     </option>
-                    <option className="dark:bg-[#151722] " value="Outros">
+                    <option
+                      value="Outros"
+                      className="bg-white dark:bg-[#0B0E14]"
+                    >
                       {t.others}
                     </option>
                   </select>
                 </div>
-                <div
-                  className="text-2xl cursor-pointer"
-                  onClick={() => setShowModal(false)}
-                >
-                  X
-                </div>
-              </div>
-              <div>
+
                 <input
                   type="number"
-                  placeholder="R$120"
-                  className="rounded-md border p-2 w-full"
+                  placeholder="R$ 0,00"
+                  className="w-full bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 focus:ring-2 focus:ring-emerald-500/30 outline-none transition-all placeholder:text-slate-400 font-bold text-slate-800 dark:text-white"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                 />
-              </div>
-              <div>
+
                 <input
                   type="text"
                   placeholder={t.nameOfEarning}
-                  className="rounded-md border p-2 w-full"
+                  className="w-full bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 focus:ring-2 focus:ring-emerald-500/30 outline-none transition-all placeholder:text-slate-400 font-medium text-slate-700 dark:text-white"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
                 />
               </div>
-            </div>
-            <div className="flex justify-start gap-2">
-              <div
-                className="w-25 bg-green-400 text-center rounded-lg p-1 text-lg cursor-pointer"
-                onClick={handleConfirm}
-              >
-                {t.confirm}
-              </div>
-              <div
-                className="w-25 bg-gray-400 text-center rounded-lg p-1 text-lg cursor-pointer"
-                onClick={() => setShowModal(false)}
-              >
-                {t.cancel}
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  className="flex-[2] bg-gradient-to-r from-[#2E5BFF] to-[#6221D1] text-white rounded-2xl py-4 font-black shadow-lg shadow-emerald-500/20 hover:opacity-95 active:scale-95 transition-all uppercase text-[10px] tracking-[0.15em]"
+                  onClick={handleConfirm}
+                >
+                  {t.confirm}
+                </button>
+                <button
+                  className="flex-1 bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-300 border border-black/5 dark:border-white/10 rounded-2xl py-4 font-bold hover:bg-black/10 dark:hover:bg-white/10 active:scale-95 transition-all uppercase text-[10px] tracking-widest"
+                  onClick={() => setShowModal(false)}
+                >
+                  {t.cancel}
+                </button>
               </div>
             </div>
           </div>

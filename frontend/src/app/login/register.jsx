@@ -1,11 +1,15 @@
+"use client";
+
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  function handleRegister(e) {
+  async function handleRegister(e) {
     e.preventDefault();
 
     if (!email || !user || !password) {
@@ -13,13 +17,18 @@ const Register = () => {
       return;
     }
 
-    console.log({
-      email,
-      user,
-      password,
+    const res = await fetch("http://localhost:3333/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, username: user, password }),
     });
 
-    // conectar back dpsss
+    if (!res.ok) {
+      alert("Erro ao registrar");
+      return;
+    }
+
+    router.push("/login");
   }
 
   return (

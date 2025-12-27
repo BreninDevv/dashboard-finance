@@ -1,21 +1,36 @@
+"use client";
+
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
 
-    if (!user || !password) {
+    if (!email || !password) {
       alert("Preencha todos os campos");
       return;
     }
 
-    console.log("User:", user);
-    console.log("Password:", password);
+    const res = await fetch("http://localhost:3333/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-    // linkar com back dpss
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Erro ao logar");
+      return;
+    }
+
+    localStorage.setItem("token", data.token);
+    router.push("/dashboard");
   }
 
   return (
@@ -24,13 +39,13 @@ const Login = () => {
       className="py-11 text-xl text-gray-400 flex flex-col gap-6"
     >
       <div>
-        <h1>User</h1>
+        <h1>Email</h1>
         <input
-          type="text"
-          placeholder="Enter your username"
+          type="email"
+          placeholder="Enter your email"
           className="border rounded-lg p-2 w-full"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
