@@ -42,9 +42,9 @@ export default function ExpensesCard() {
 
   return (
     <>
-      <div className="group duration-500 bg-white dark:bg-[#161B22]/40 dark:backdrop-blur-md border border-slate-200 dark:border-white/10 w-full h-40 rounded-[2rem] p-6 flex flex-col justify-between font-inter shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-2xl my-2 hidden sm:flex transition-all hover:shadow-xl hover:border-red-500/20">
+      <div className="group duration-500 bg-white dark:bg-[#161B22]/40 dark:backdrop-blur-md border border-slate-200 dark:border-white/10 w-full h-40 rounded-[2rem] p-6 flex flex-col justify-between font-inter shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-2xl my-2 hidden sm:flex transition-all hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/10">
         <div>
-          <p className="text-slate-500 dark:text-slate-400 font-semibold text-[10px] uppercase tracking-[0.2em]">
+          <p className="text-[#0F172A] dark:text-slate-400 font-semibold text-[10px] uppercase tracking-[0.2em]">
             {t.totalExpenses}
           </p>
         </div>
@@ -55,14 +55,14 @@ export default function ExpensesCard() {
         </div>
         <div className="flex justify-end">
           <button
-            className="bg-red-500 dark:bg-red-500/10 border border-red-100 dark:border-red-500/30 w-fit px-5 py-2 text-center text-white dark:text-red-500 dark:text-red-400 rounded-xl flex gap-2 justify-center items-center cursor-pointer hover:bg-red-400 dark:hover:bg-red-500 hover:text-white transition-all duration-300 active:scale-95"
+            className="bg-red-500 dark:bg-red-500/10 border border-red-100 dark:border-red-500/30 w-fit px-5 py-2 text-center text-white dark:text-red-500 rounded-xl flex gap-2 justify-center items-center cursor-pointer hover:bg-red-400 dark:hover:bg-red-500 hover:text-white transition-all duration-300 active:scale-95 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] group/btn"
             onClick={() => setShowModal(true)}
           >
             <Image
               src={Send}
               alt="Send icon"
               width={16}
-              className="dark:brightness-110"
+              className="dark:brightness-110 group-hover/btn:brightness-200 transition-all"
             />
             <span className="text-[11px] font-black uppercase tracking-wider">
               {t.send}

@@ -38,7 +38,7 @@ export const translations = {
     addMoney: "Add dinheiro",
     addMoneyFor: "Add dinheiro para:",
     valueToAdd: "Valor para add...",
-    Description: "Descrição...",
+    description: "Descrição...",
 
     delete: "Deletar",
 

@@ -43,7 +43,7 @@ export default function IncomeCard() {
     <>
       <div className="group duration-500 bg-white/70 dark:bg-[#161B22]/40 backdrop-blur-xl border border-white/40 dark:border-white/10 w-full h-40 rounded-[2rem] p-6 flex flex-col justify-between font-inter shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-2xl my-2 hidden sm:flex transition-all hover:border-emerald-500/40 hover:shadow-emerald-500/10">
         <div>
-          <p className="text-slate-500 dark:text-slate-400 font-semibold text-[10px] uppercase tracking-[0.2em]">
+          <p className="text-[#0F172A] dark:text-slate-400 font-semibold text-[10px] uppercase tracking-[0.2em]">
             {t.totalIncome}
           </p>
         </div>

@@ -11,9 +11,11 @@ const HeaderDesktop = () => {
         <div>
           <Saudacao />
         </div>
-        <div className="flex gap-12">
-          <DarkMode />
-          <EnPt />
+        <div className="flex justify-between gap-12">
+          <div className="flex gap-12">
+            <DarkMode />
+            <EnPt />
+          </div>
           <Avatar />
         </div>
       </div>

@@ -28,8 +28,8 @@ const Login = () => {
       alert(data.message || "Erro ao logar");
       return;
     }
-
     localStorage.setItem("token", data.token);
+    localStorage.setItem("userName", data.username);
     router.push("/dashboard");
   }
 

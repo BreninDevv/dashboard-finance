@@ -58,16 +58,13 @@ const Desires = () => {
 
   return (
     <>
-      {/* CONTAINER PRINCIPAL: Mantém o tamanho fixo e não deixa o layout vazar */}
-      <div className="bg-gradient-to-bl to-[#111827] from-[#1f2937] border-[#577886] border min-h-56 max-h-56 xl:min-h-56 xl:max-h-56 rounded-xl shadow-xl px-4 py-4 w-full flex flex-col overflow-hidden">
-        {/* HEADER: Fica fixo no topo, fora da área de scroll */}
+      <div className="bg-gradient-to-tl to-[#374b6e] from-[#204a99] dark:bg-gradient-to-bl dark:to-[#111827] dark:from-[#1f2937] border-[#577886] border min-h-56 max-h-56 xl:min-h-56 xl:max-h-56 rounded-xl shadow-xl px-4 py-4 w-full flex flex-col overflow-hidden">
         <div className="flex justify-between items-center mb-4 flex-shrink-0">
-          <div className="opacity-0 w-6">Jes</div>{" "}
-          {/* Espaçador para centralizar título se necessário */}
+          {" "}
           <h1 className="text-white text-xl font-bold">{t.desiresStatus}</h1>
           <button
             onClick={() => setModalOpen(true)}
-            className="cursor-pointer hover:opacity-80 transition-opacity z-50"
+            className="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
           >
             <Image
               src={WhiteEdit}
@@ -77,14 +74,21 @@ const Desires = () => {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto custom-scrollbar pr-1">
+        <div className="flex flex-col gap-2 pb-4   bg-white/5 dark:border-white/5 rounded-2xl min-h-32 max-h-36 p-2 overflow-auto custom-scrollbar">
           {desires.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-6 opacity-50 h-full">
-              <Image src={Right} alt="Check logo" width={32} />
-              <p className="text-white mt-2 text-sm">{t.noDesires}</p>
+            <div className="flex flex-col items-center justify-center py-4  h-full">
+              <Image
+                src={Right}
+                alt="Check logo"
+                width={32}
+                className="opacity-50"
+              />
+              <p className="text-slate-500 mt-1 text-sm font-medium">
+                {t.noDesires}
+              </p>
             </div>
           ) : (
-            <div className="flex flex-col gap-y-3 pb-2">
+            <div className="flex flex-col gap-y-1.5 pb-1 overflow-y-auto max-h-[190px] custom-scrollbar">
               {desires.map((d) => {
                 const percent = Math.min((d.current / d.price) * 100, 100);
                 const isCompleted = d.current >= d.price;
@@ -92,42 +96,59 @@ const Desires = () => {
                 return (
                   <div
                     key={d.id}
-                    className="bg-gray-900 p-3 rounded-lg text-white flex flex-col gap-y-2 border border-white/5"
+                    className="group bg-[#161B22]/40 border border-white/10 p-2 rounded-lg transition-all duration-300 hover:border-indigo-500/30"
                   >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium truncate max-w-[100px]">
-                        {d.name}
-                      </span>
-                      <span className="text-xs text-gray-400">
-                        {isCompleted
-                          ? "COMPLETED!"
-                          : `R$ ${d.price.toLocaleString()}`}
-                      </span>
-                      <button
-                        onClick={() => deleteDesire(d.id)}
-                        className="hover:opacity-70"
-                      >
-                        <Image
-                          src={isCompleted ? Check : TrashWhite}
-                          alt="Action"
-                          width={16}
-                        />
-                      </button>
+                    {/* Topo: Mais denso */}
+                    <div className="flex justify-between items-center mb-1">
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-[12px] text-white truncate leading-tight">
+                          {d.name}
+                        </span>
+                        <span className="text-[9px] text-slate-500 font-medium">
+                          {isCompleted
+                            ? "Concluído"
+                            : `R$ ${d.price.toLocaleString()}`}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className={`text-[10px] font-black ${
+                            isCompleted ? "text-emerald-400" : "text-indigo-400"
+                          }`}
+                        >
+                          {percent.toFixed(0)}%
+                        </span>
+                        <button
+                          onClick={() => deleteDesire(d.id)}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5"
+                        >
+                          <Image
+                            src={isCompleted ? Check : TrashWhite}
+                            alt="Del"
+                            width={12}
+                            height={12}
+                            className="opacity-40 hover:opacity-100"
+                          />
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="w-full bg-gray-700 rounded-full h-2">
+                    {/* Barra de Progresso - Altura mínima */}
+                    <div className="w-full bg-white/5 rounded-full h-[3px] overflow-hidden">
                       <div
                         style={{ width: `${percent}%` }}
-                        className={`h-2 rounded-full transition-all duration-500 ${
-                          isCompleted ? "bg-green-500" : "bg-white"
+                        className={`h-full rounded-full transition-all duration-1000 ${
+                          isCompleted ? "bg-emerald-500" : "bg-indigo-500"
                         }`}
                       ></div>
                     </div>
 
+                    {/* Botão de Ação - Altura reduzida (py-1) */}
                     {!isCompleted && (
                       <button
                         onClick={() => openAddModal(d)}
-                        className="bg-white text-black text-[10px] font-bold uppercase py-1.5 rounded mt-1 hover:bg-gray-200 transition-colors"
+                        className="w-full mt-1.5 bg-white/5 hover:bg-white hover:text-[#0B0E14] text-white text-[8px] font-black uppercase py-1 rounded-md transition-all border border-white/5 tracking-tighter"
                       >
                         {t.addMoney}
                       </button>
@@ -146,7 +167,7 @@ const Desires = () => {
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="bg-white/90 dark:bg-[#161B22]/90 backdrop-blur-2xl text-slate-900 dark:text-white w-full max-w-[340px] rounded-[2.5rem] shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden py-8 px-8 transform transition-all animate-in fade-in zoom-in duration-300"
+            className="bg-white/90 dark:bg-[#0B0E14]/90 backdrop-blur-2xl text-slate-900 dark:text-white w-full max-w-[340px] rounded-[2.5rem] shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden py-8 px-8 transform transition-all animate-in fade-in zoom-in duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col gap-6">
@@ -252,7 +273,6 @@ const Desires = () => {
                     placeholder="R$ 0,00"
                     value={addValue}
                     onChange={(e) => setAddValue(e.target.value)}
-                    /* Removi as bordas sólidas e adicionei o estilo glass nos inputs */
                     className="w-full bg-slate-100/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all font-bold text-slate-800 dark:text-white placeholder:text-slate-400"
                   />
                 </div>

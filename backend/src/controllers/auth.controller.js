@@ -47,7 +47,7 @@ export async function login(req, res) {
       expiresIn: "1d",
     });
 
-    return res.json({ token });
+    return res.json({ token, username: user.username });
   } catch (error) {
     return res.status(500).json({ message: "Erro no servidor" });
   }

@@ -5,12 +5,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ComponentTodo from "./componentTodo";
 import RestaurantLogo from "../../components/icons/restaurant-line.svg";
-import EditLogo from "../../components/icons/edit-box-line.svg";
+import EditLogo from "../../components/icons/edit-box-line-white.svg";
 import Compras from "../../components/icons/shopping-cart-2-line.svg";
 import Lazer from "../../components/icons/football-line.svg";
 import Transporte from "../../components/icons/bus-2-line.svg";
 import Contas from "../../components/icons/money-dollar-box-line.svg";
-import Right from "../../components/icons/checkbox-circle-line.svg";
+import Right from "../../components/icons/checkbox-circle-line-white.svg";
 
 const Todo = () => {
   const { t } = useLanguage();
@@ -56,9 +56,9 @@ const Todo = () => {
 
   return (
     <>
-      <div className="group duration-500 bg-gradient-to-bl to-[#111827] from-[#1f2937] border-[#577886] border backdrop-blur-xl   w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
+      <div className="group duration-500 bg-gradient-to-tl to-[#374b6e] from-[#204a99]  dark:bg-gradient-to-bl dark:to-[#111827] dark:from-[#1f2937] border-[#577886] border backdrop-blur-xl   w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
         <div className="flex justify-between py-4 items-center">
-          <h1 className="text-xl font-extrabold text-slate-800 dark:text-white">
+          <h1 className="text-xl font-extrabold text-slate-800 text-white">
             Todo List
           </h1>
 
@@ -66,28 +66,23 @@ const Todo = () => {
             onClick={() => setOn(true)}
             className="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
           >
-            <Image
-              src={EditLogo}
-              alt="Edit Logo"
-              width={20}
-              className="opacity-70 dark:brightness-110"
-            />
+            <Image src={EditLogo} alt="Edit Logo" width={25} />
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 pb-4 bg-slate-200  dark:bg-white/5 border border-slate-200/50 dark:border-white/5 rounded-2xl min-h-32 max-h-36 p-2 overflow-auto custom-scrollbar">
+        <div className="flex flex-col gap-2 pb-4  bg-white/5 dark:border-white/5 rounded-2xl min-h-32 max-h-36 p-2 overflow-auto custom-scrollbar">
           {tasks.length === 0 ? (
-            <div className="text-center text-slate-400 dark:text-slate-500 flex flex-col items-center py-4">
+            <div className="text-center text-slate-500 flex flex-col items-center py-4">
               <div>
                 <Image
                   src={Right}
                   alt="Check logo"
-                  className="opacity-30"
+                  className="opacity-50"
                   width={30}
                 />
               </div>
               <div>
-                <span className="text-xs font-medium">{t.noTasks}</span>
+                <span className="text-sm font-medium">{t.noTasks}</span>
               </div>
             </div>
           ) : (
