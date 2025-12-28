@@ -82,7 +82,9 @@ const Todo = () => {
                 />
               </div>
               <div>
-                <span className="text-sm font-medium">{t.noTasks}</span>
+                <span className="text-sm font-medium text-white">
+                  {t.noTasks}
+                </span>
               </div>
             </div>
           ) : (

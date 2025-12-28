@@ -39,6 +39,11 @@ export const translations = {
     addMoneyFor: "Add dinheiro para:",
     valueToAdd: "Valor para add...",
     description: "Descrição...",
+    userLogin: "USUÁRIO LOGADO",
+    SeeYouLater: "Até logo!",
+    logout: "Deseja mesmo encerrar sua sessão",
+    leaveNow: "Sair Agora",
+    jesusIsGood: "Jesus é bom",
 
     delete: "Deletar",
 
@@ -97,6 +102,11 @@ export const translations = {
     addMoneyFor: "Add money for:",
     valueToAdd: "Value to add...",
     description: "Description...",
+    userLogin: "LOGGED IN USER",
+    SeeYouLater: "See you later!",
+    logout: "Are you sure you want to log out",
+    leaveNow: "Leave now",
+    jesusIsGood: "Jesus is Good",
 
     delete: "Delete",
     months: {

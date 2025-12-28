@@ -83,7 +83,7 @@ const Desires = () => {
                 width={32}
                 className="opacity-50"
               />
-              <p className="text-slate-500 mt-1 text-sm font-medium">
+              <p className="text-slate-500 mt-1 text-sm font-medium text-white">
                 {t.noDesires}
               </p>
             </div>

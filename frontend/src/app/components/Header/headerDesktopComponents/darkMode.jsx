@@ -11,7 +11,9 @@ const DarkMode = () => {
   return (
     <>
       <div className="flex items-center gap-1.5 justify-between font-inter">
-        <span className=" text-xl">Dark Mode</span>
+        <span className=" text-xl text-[#0a091b] dark:text-white font-medium">
+          Dark Mode
+        </span>
         <div
           className={`xl:w-16 xl:h-8 lg:w-16 lg:h-8 w-12 h-8  rounded-2xl cursor-pointer ${
             dark ? "bg-sky-500" : "bg-zinc-600"

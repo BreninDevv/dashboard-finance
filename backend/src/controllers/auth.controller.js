@@ -52,3 +52,42 @@ export async function login(req, res) {
     return res.status(500).json({ message: "Erro no servidor" });
   }
 }
+// Função para verificar se o e-mail existe antes de liberar a troca de senha
+export async function checkEmail(req, res) {
+  try {
+    const { email } = req.query; // Pega o email da URL: ?email=teste@teste.com
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "E-mail não encontrado" });
+    }
+
+    return res.status(200).json({ exists: true });
+  } catch (error) {
+    return res.status(500).json({ message: "Erro ao verificar e-mail" });
+  }
+}
+
+export async function resetPassword(req, res) {
+  try {
+    const { email, newPassword } = req.body;
+
+    if (!newPassword || newPassword.length < 3) {
+      return res.status(400).json({ message: "Senha muito curta" });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    user.password = hashedPassword;
+    await user.save();
+
+    return res.status(200).json({ message: "Senha alterada com sucesso!" });
+  } catch (error) {
+    return res.status(500).json({ message: "Erro ao redefinir senha" });
+  }
+}

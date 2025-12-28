@@ -8,7 +8,9 @@ const Saudacao = () => {
   return (
     <>
       <div>
-        <h1 className="text-4xl">{t.myBank}</h1>
+        <h1 className="text-4xl text-[#0a091b] dark:text-white font-bold">
+          {t.myBank}
+        </h1>
       </div>
     </>
   );

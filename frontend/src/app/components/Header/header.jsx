@@ -5,6 +5,7 @@ import { useLanguage } from "../../i18n/languageContext";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import MenuHamburguer from "../icons/menu-line.svg";
+import MenuHamburguerWhite from "../icons/menu-line-white.svg";
 import Avatar from "./headerDesktopComponents/avatar";
 import DarkMode from "./headerDesktopComponents/darkMode";
 import EnPt from "./headerDesktopComponents/enPt";
@@ -33,8 +34,17 @@ const Header = () => {
         <div className="px-4">
           <h1 className="font-bold text-3xl ">{t.myBank}</h1>
         </div>
-        <div onClick={() => setIsOpen((prev) => !prev)}>
+        <div
+          className="block dark:hidden"
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
           <Image src={MenuHamburguer} alt="Menu Hamburguer" width={30} />
+        </div>
+        <div
+          className="hidden dark:block"
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <Image src={MenuHamburguerWhite} alt="Menu Hamburguer" width={30} />
         </div>
       </header>
 
