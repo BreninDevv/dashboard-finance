@@ -8,7 +8,7 @@ const EnPt = () => {
   const isPt = lang === "pt";
 
   return (
-    <div className="flex items-center gap-1.5 justify-between font-inter">
+    <div className="flex items-center gap-1.5 justify-between font-inter gap-10">
       <span className="text-2xl text-[#0a091b] dark:text-white font-medium">
         En / Pt
       </span>

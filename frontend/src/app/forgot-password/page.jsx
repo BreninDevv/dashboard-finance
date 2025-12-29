@@ -7,20 +7,18 @@ import { useRouter } from "next/navigation";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [step, setStep] = useState(1); // 1: Pedir e-mail, 2: Digitar nova senha
+  const [step, setStep] = useState(1);
   const [message, setMessage] = useState({ text: "", type: "" });
   const router = useRouter();
 
-  // Função para verificar se o e-mail existe
   const handleVerifyEmail = async (e) => {
     e.preventDefault();
-    // Chamada real para o backend
     const res = await fetch(
       `http://localhost:3333/auth/check-email?email=${email}`
     );
 
     if (res.ok) {
-      setStep(2); // Se o e-mail existe, libera o campo da nova senha
+      setStep(2);
       setMessage({
         text: "E-mail encontrado! Digite a nova senha.",
         type: "success",
@@ -30,14 +28,13 @@ const ForgotPassword = () => {
     }
   };
 
-  // Função para salvar a nova senha
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
 
     const res = await fetch("http://localhost:3333/auth/reset-password", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, newPassword }), // Envia o email e a nova senha
+      body: JSON.stringify({ email, newPassword }),
     });
 
     if (res.ok) {
@@ -68,7 +65,6 @@ const ForgotPassword = () => {
           onSubmit={step === 1 ? handleVerifyEmail : handleUpdatePassword}
           className="flex flex-col gap-4"
         >
-          {/* Campo de E-mail (Sempre visível ou desabilitado no step 2) */}
           <input
             type="email"
             placeholder="your@email.com"
@@ -80,7 +76,6 @@ const ForgotPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          {/* Campo de Nova Senha (Só aparece no Step 2) */}
           {step === 2 && (
             <input
               type="password"
@@ -92,7 +87,6 @@ const ForgotPassword = () => {
             />
           )}
 
-          {/* Mensagens de Feedback */}
           {message.text && (
             <div
               className={`text-xs font-bold text-center p-2 rounded-lg ${

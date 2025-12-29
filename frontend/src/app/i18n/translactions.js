@@ -44,6 +44,8 @@ export const translations = {
     logout: "Deseja mesmo encerrar sua sessão",
     leaveNow: "Sair Agora",
     jesusIsGood: "Jesus é bom",
+    language: "Idioma",
+    theme: "Tema",
 
     delete: "Deletar",
 
@@ -107,6 +109,8 @@ export const translations = {
     logout: "Are you sure you want to log out",
     leaveNow: "Leave now",
     jesusIsGood: "Jesus is Good",
+    language: "Language",
+    theme: "Theme",
 
     delete: "Delete",
     months: {

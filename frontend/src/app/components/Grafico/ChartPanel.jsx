@@ -7,7 +7,7 @@ import { useLanguage } from "../../i18n/languageContext";
 
 export default function ChartPanel({ data }) {
   const { transactions } = useTransactions();
-  const { t } = useLanguage(); // ✅ aqui é o lugar certo
+  const { t } = useLanguage();
 
   const months = [
     t.months.jan,

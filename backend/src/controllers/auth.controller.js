@@ -52,10 +52,9 @@ export async function login(req, res) {
     return res.status(500).json({ message: "Erro no servidor" });
   }
 }
-// Função para verificar se o e-mail existe antes de liberar a troca de senha
 export async function checkEmail(req, res) {
   try {
-    const { email } = req.query; // Pega o email da URL: ?email=teste@teste.com
+    const { email } = req.query;
     const user = await User.findOne({ email });
 
     if (!user) {

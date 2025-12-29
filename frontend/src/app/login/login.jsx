@@ -66,7 +66,6 @@ const Login = () => {
         />
       </div>
 
-      {/* Espaçador invisível para igualar a altura com o Register (campo User) */}
       <div className="h-[68px]" />
 
       <div className="h-10 flex items-center justify-center">

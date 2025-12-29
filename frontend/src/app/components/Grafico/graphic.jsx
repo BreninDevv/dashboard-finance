@@ -17,8 +17,6 @@ function Graphic({ data }) {
           data={data}
           margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
         >
-          {/* Grid horizontal sutil apenas para guiar o olhar */}
-
           <XAxis
             dataKey="name"
             axisLine={false}

@@ -8,11 +8,8 @@ const Page = () => {
   const [login, setLogin] = useState(false);
 
   return (
-    // Removi o h-screen fixo para evitar cortes no mobile se o teclado abrir
     <div className="min-h-screen flex items-center justify-center bg-gray-900 p-4 font-inter">
       <div className="grid w-full max-w-4xl min-h-[500px] md:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl">
-        {/* Lado Esquerdo - Dashboard Finance (ESCONDIDO NO MOBILE) */}
-        {/* Adicionei 'hidden md:flex' para sumir em telas pequenas */}
         <div className="hidden md:flex flex-col items-center justify-center p-12 bg-gradient-to-br from-blue-800 to-pink-200">
           <div className="flex flex-col gap-2">
             <h1 className="text-white font-medium text-4xl text-center">
@@ -25,10 +22,8 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Lado Direito - Formulários (SEMPRE VISÍVEL) */}
         <div className="flex flex-col p-6 md:p-8 bg-[#1a1b23] justify-center w-full">
           <div className="flex flex-col items-center w-full">
-            {/* Seletor Login/Register */}
             <div className="w-full max-w-[240px] h-10 bg-[#2d2f3d] flex justify-center rounded-xl text-gray-300 mb-6">
               <div
                 className={`flex-1 text-center pt-2 rounded-xl transition-all duration-300 cursor-pointer ${
@@ -48,7 +43,6 @@ const Page = () => {
               </div>
             </div>
 
-            {/* Container do Formulário */}
             <div className="w-full min-h-[380px] flex flex-col justify-start">
               {!login ? <Login /> : <Register />}
             </div>

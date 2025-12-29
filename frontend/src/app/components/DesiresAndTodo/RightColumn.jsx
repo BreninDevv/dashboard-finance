@@ -10,7 +10,7 @@ export default function RightColumn() {
       <div className="flex-1 min-w-0">
         <Todo />
       </div>
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 pb-4">
         <Desires />
       </div>
     </div>

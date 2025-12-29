@@ -37,7 +37,7 @@ const Avatar = () => {
         </div>
 
         <div
-          className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm font-black shadow-lg shadow-indigo-500/10 cursor-pointer duration-300 hover:scale-115"
+          className="xl:w-10 xl:h-10 lg:w-10 lg:h-10 w-13 h-13 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm font-black shadow-lg shadow-indigo-500/10 cursor-pointer duration-300 hover:scale-115 "
           onClick={() => setModal((prev) => !prev)}
         >
           {name ? name.charAt(0).toUpperCase() : "U"}

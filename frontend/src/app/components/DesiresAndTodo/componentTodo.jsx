@@ -5,7 +5,6 @@ const ComponentTodo = ({ id, type, name, price, nameType, onDelete }) => {
   return (
     <div className="group flex justify-between items-center bg-[#161B22]/40 hover:bg-[#20243c] p-3 rounded-xl border border-white/5 shadow-sm transition-all duration-300">
       <div className="flex items-center gap-4">
-        {/* Container do Ícone Compacto e Dark */}
         <div className="flex items-center justify-center w-10 h-8 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
           <Image
             src={type}

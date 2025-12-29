@@ -16,7 +16,7 @@ const Page = () => {
   return (
     <>
       <div className="flex justify-center xl:h-screen xl:items-center xl:overflow-hidden lg:h-screen lg:items-center lg:overflow-hidden lg:px-4">
-        <div className="duration-500 dark:bg-[#151722] bg-[#e5e5ee]  xl:bg-gray-100 lg:bg-gray-100 w-400 h-200 mb-10 rounded-3xl flex flex-col xl:shadow-lg lg:shadow-lg">
+        <div className="duration-500 dark:bg-[#151722] bg-gray-100 xl:bg-gray-100 lg:bg-gray-100 w-400 h-200 mb-10 rounded-3xl flex flex-col xl:shadow-lg lg:shadow-lg">
           <div>
             <TransactionsProvider>
               <div className="lg:hidden">

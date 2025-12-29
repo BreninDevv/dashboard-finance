@@ -98,7 +98,6 @@ const Desires = () => {
                     key={d.id}
                     className="group bg-[#161B22]/40 border border-white/10 p-2 rounded-lg transition-all duration-300 hover:border-indigo-500/30"
                   >
-                    {/* Topo: Mais denso */}
                     <div className="flex justify-between items-center mb-1">
                       <div className="flex flex-col min-w-0">
                         <span className="font-bold text-[12px] text-white truncate leading-tight">
@@ -134,7 +133,6 @@ const Desires = () => {
                       </div>
                     </div>
 
-                    {/* Barra de Progresso - Altura mínima */}
                     <div className="w-full bg-white/5 rounded-full h-[3px] overflow-hidden">
                       <div
                         style={{ width: `${percent}%` }}
@@ -144,7 +142,6 @@ const Desires = () => {
                       ></div>
                     </div>
 
-                    {/* Botão de Ação - Altura reduzida (py-1) */}
                     {!isCompleted && (
                       <button
                         onClick={() => openAddModal(d)}
