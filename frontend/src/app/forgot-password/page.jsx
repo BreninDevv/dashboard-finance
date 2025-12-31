@@ -14,7 +14,7 @@ const ForgotPassword = () => {
   const handleVerifyEmail = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      `http://localhost:3333/auth/check-email?email=${email}`
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/check-email?email=${email}`
     );
 
     if (res.ok) {
@@ -31,11 +31,14 @@ const ForgotPassword = () => {
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3333/auth/reset-password", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, newPassword }),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, newPassword }),
+      }
+    );
 
     if (res.ok) {
       setMessage({
