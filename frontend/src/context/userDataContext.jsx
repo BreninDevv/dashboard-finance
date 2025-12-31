@@ -12,7 +12,7 @@ const UserDataContext = createContext();
 export const UserDataProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
   const [desires, setDesires] = useState([]);
-  const API_URL = "http://localhost:3333/api";
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
 
   const loadUserData = useCallback(async () => {
     const token = localStorage.getItem("token");

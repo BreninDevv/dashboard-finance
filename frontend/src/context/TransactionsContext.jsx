@@ -7,7 +7,7 @@ const TransactionsContext = createContext(null);
 export function TransactionsProvider({ children }) {
   const [balance, setBalance] = useState(0);
   const [transactions, setTransactions] = useState([]);
-  const API_URL = "http://localhost:3333/api/transactions";
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/transactions`;
 
   useEffect(() => {
     const fetchTransactions = async () => {
