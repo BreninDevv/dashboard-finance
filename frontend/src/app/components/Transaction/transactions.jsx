@@ -105,7 +105,7 @@ function Transactions({ transactions = [], onDelete }) {
                   </span>
                   <button
                     onClick={() => onDelete && onDelete(transaction.id)}
-                    className="opacity-0 group-hover:opacity-100 text-[10px] font-bold text-slate-400 hover:text-red-500 transition-all uppercase tracking-tighter"
+                    className=" group-hover:opacity-100 text-[10px] font-bold text-slate-400 hover:text-red-500 transition-all uppercase tracking-tighter"
                   >
                     {t.delete}
                   </button>

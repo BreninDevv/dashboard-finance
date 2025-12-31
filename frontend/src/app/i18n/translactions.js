@@ -46,7 +46,7 @@ export const translations = {
     jesusIsGood: "Jesus é bom",
     language: "Idioma",
     theme: "Tema",
-
+    newTask: "Nova Tarefa",
     delete: "Deletar",
 
     months: {
@@ -111,7 +111,7 @@ export const translations = {
     jesusIsGood: "Jesus is Good",
     language: "Language",
     theme: "Theme",
-
+    newTask: "New Task",
     delete: "Delete",
     months: {
       jan: "Jan",

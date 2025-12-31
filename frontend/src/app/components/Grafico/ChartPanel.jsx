@@ -25,21 +25,24 @@ export default function ChartPanel({ data }) {
   ];
 
   const chartData = useMemo(() => {
-    if (data && Array.isArray(data)) return data;
-
     const totals = new Array(12).fill(0);
 
     transactions.forEach((tr) => {
-      const idx = new Date(tr.date).getMonth();
-      const signed = tr.isExpense ? -Number(tr.amount) : Number(tr.amount);
-      totals[idx] += signed;
+      const dateValue = new Date(tr.date);
+
+      if (!isNaN(dateValue.getTime())) {
+        const idx = dateValue.getMonth();
+        const amountValue = Number(tr.amount) || 0;
+        const signed = tr.isExpense ? -amountValue : amountValue;
+        totals[idx] += signed;
+      }
     });
 
     return months.map((m, i) => ({
       name: m,
       value: Math.round(totals[i]),
     }));
-  }, [transactions, data, months]);
+  }, [transactions, months]);
 
   return (
     <div>

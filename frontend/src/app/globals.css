@@ -15,7 +15,6 @@
     @apply transition-colors duration-300;
   }
 }
-/* Estilização da Scrollbar para Webkit (Chrome, Safari, Edge) */
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;

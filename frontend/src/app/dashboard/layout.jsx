@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { UserDataProvider } from "../../context/userDataContext";
 
 export default function DashboardLayout({ children }) {
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -25,5 +26,5 @@ export default function DashboardLayout({ children }) {
     );
   }
 
-  return <>{children}</>;
+  return <UserDataProvider>{children}</UserDataProvider>;
 }

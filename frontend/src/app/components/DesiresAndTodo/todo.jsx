@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../../i18n/languageContext";
+import { useUserData } from "../../../context/userDataContext";
 import React, { useState } from "react";
 import Image from "next/image";
 import ComponentTodo from "./componentTodo";
@@ -14,13 +15,12 @@ import Right from "../../components/icons/checkbox-circle-line-white.svg";
 
 const Todo = () => {
   const { t } = useLanguage();
-  const [on, setOn] = useState(false);
+  const { todos, addTodo, deleteTodo } = useUserData();
 
+  const [on, setOn] = useState(false);
   const [taskType, setTaskType] = useState("");
   const [taskName, setTaskName] = useState("");
   const [taskPrice, setTaskPrice] = useState("");
-
-  const [tasks, setTasks] = useState([]);
 
   const icons = {
     Alimentação: RestaurantLogo,
@@ -30,73 +30,59 @@ const Todo = () => {
     Lazer: Lazer,
   };
 
-  function deleteTask(id) {
-    setTasks((prev) => prev.filter((task) => task.id !== id));
-  }
-
   function createTask() {
     if (!taskType || !taskName || !taskPrice) return;
 
-    const newTask = {
-      id: Date.now(),
-      type: icons[taskType],
-      nameType: taskType,
-      name: taskName,
+    addTodo({
+      task: taskName,
+      type: taskType,
       price: Number(taskPrice),
-    };
-
-    setTasks([...tasks, newTask]);
+    });
 
     setTaskType("");
     setTaskName("");
     setTaskPrice("");
-
     setOn(false);
   }
 
   return (
     <>
-      <div className="group duration-500 bg-gradient-to-tl to-[#374b6e] from-[#204a99]  dark:bg-gradient-to-bl dark:to-[#111827] dark:from-[#1f2937] border-[#577886] border backdrop-blur-xl   w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
+      <div className="group duration-500 bg-gradient-to-tl to-[#374b6e] from-[#204a99] dark:bg-gradient-to-bl dark:to-[#111827] dark:from-[#1f2937] border-[#577886] border backdrop-blur-xl w-full min-w-32 h-56 rounded-xl px-4 shadow-xl transition-all overflow-hidden">
         <div className="flex justify-between py-4 items-center">
-          <h1 className="text-xl font-extrabold text-slate-800 text-white">
-            Todo List
-          </h1>
+          <h1 className="text-xl font-extrabold text-white">Todo List</h1>
 
           <button
             onClick={() => setOn(true)}
             className="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
           >
-            <Image src={EditLogo} alt="Edit Logo" width={25} />
+            <Image src={EditLogo} alt="Edit Logo" width={25} height={25} />
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 pb-4  bg-white/5 dark:border-white/5 rounded-2xl min-h-32 max-h-36 p-2 overflow-auto custom-scrollbar">
-          {tasks.length === 0 ? (
+        <div className="flex flex-col gap-2 pb-4 bg-white/5 dark:border-white/5 rounded-2xl min-h-32 max-h-36 p-2 overflow-auto custom-scrollbar">
+          {!todos || todos.length === 0 ? (
             <div className="text-center text-slate-500 flex flex-col items-center py-4">
-              <div>
-                <Image
-                  src={Right}
-                  alt="Check logo"
-                  className="opacity-50"
-                  width={30}
-                />
-              </div>
-              <div>
-                <span className="text-sm font-medium text-white">
-                  {t.noTasks}
-                </span>
-              </div>
+              <Image
+                src={Right}
+                alt="Check logo"
+                className="opacity-50"
+                width={30}
+                height={30}
+              />
+              <span className="text-sm font-medium text-white">
+                {t.noTasks}
+              </span>
             </div>
           ) : (
-            tasks.map((t) => (
+            todos.map((task) => (
               <ComponentTodo
-                key={t.id}
-                id={t.id}
-                type={t.type}
-                name={t.name}
-                price={t.price}
-                nameType={t.nameType}
-                onDelete={deleteTask}
+                key={task._id}
+                id={task._id}
+                type={icons[task.type] || Contas}
+                name={task.task}
+                price={task.price}
+                nameType={task.type}
+                onDelete={deleteTodo}
               />
             ))
           )}
@@ -115,7 +101,7 @@ const Todo = () => {
             <div className="flex flex-col gap-5">
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-extrabold tracking-tight text-slate-800 dark:text-white">
-                  Nova Tarefa
+                  {t.newTask}
                 </h2>
                 <button
                   className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors p-2 bg-black/5 dark:bg-white/5 rounded-full"
