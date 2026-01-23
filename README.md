@@ -3,6 +3,8 @@
 Um **Dashboard Financeiro completo**, moderno e funcional, desenvolvido com foco em **aprendizado prático**, **boas práticas** e **portfólio profissional**.  
 O projeto simula um sistema financeiro pessoal com autenticação, controle de ganhos, gastos, tarefas e desejos, tudo centralizado em uma interface elegante e intuitiva.
 
+![Animaçã23o](https://github.com/user-attachments/assets/3802cac2-0848-4821-ad19-9de30d96d0a1)
+
 ## link Deploy:
 
 - https://dashboard-finance-gray.vercel.app/login
